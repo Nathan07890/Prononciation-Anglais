@@ -4,394 +4,1326 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>English Pronunciation</title>
+
+<title>English Pronunciation 🇬🇧</title>
 
 <style>
+
+/* =========================
+   BASE
+========================= */
+
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    color: #172033;
+
     background:
-        radial-gradient(circle at top left, #7c3aed 0%, transparent 35%),
-        radial-gradient(circle at bottom right, #2563eb 0%, transparent 35%),
-        linear-gradient(135deg, #111827, #312e81);
-    color: #111827;
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(99, 102, 241, 0.32),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(14, 165, 233, 0.25),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f8fafc 50%,
+            #eff6ff
+        );
 }
 
+
+/* =========================
+   HEADER
+========================= */
+
 header {
-    background: rgba(15, 23, 42, 0.95);
+    position: relative;
+    overflow: hidden;
+
     color: white;
-    padding: 38px 20px;
+
+    padding:
+        65px 20px
+        75px;
+
     text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #312e81,
+            #1e3a8a
+        );
+
+    box-shadow:
+        0 15px 45px rgba(15, 23, 42, 0.25);
+}
+
+header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.06);
+
+    top: -180px;
+    left: -100px;
+}
+
+header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.05);
+
+    right: -100px;
+    bottom: -180px;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+    margin: auto;
 }
 
 .badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 8px 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 16px;
+
     border-radius: 999px;
+
     font-size: 13px;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    color: #e0e7ff;
+
+    background: rgba(255,255,255,0.10);
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    backdrop-filter: blur(10px);
+
+    margin-bottom: 20px;
 }
 
 h1 {
     margin: 0;
-    font-size: clamp(32px, 6vw, 52px);
+
+    font-size:
+        clamp(38px, 7vw, 64px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
 }
 
 .subtitle {
-    margin-top: 12px;
-    opacity: 0.8;
-    font-size: 16px;
+    max-width: 650px;
+
+    margin:
+        18px auto
+        0;
+
+    color: rgba(255,255,255,0.76);
+
+    font-size:
+        clamp(15px, 2vw, 18px);
+
+    line-height: 1.6;
 }
+
+
+/* =========================
+   MAIN
+========================= */
 
 .container {
-    width: min(1050px, calc(100% - 30px));
-    margin: 30px auto;
+    width:
+        min(
+            1100px,
+            calc(100% - 30px)
+        );
+
+    margin:
+        -38px auto
+        40px;
+
+    position: relative;
+    z-index: 5;
 }
+
+
+/* =========================
+   MAIN PANEL
+========================= */
 
 .panel {
-    background: rgba(255,255,255,0.93);
-    border-radius: 24px;
-    padding: 25px;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+    background:
+        rgba(255,255,255,0.90);
+
+    border:
+        1px solid rgba(255,255,255,0.9);
+
+    border-radius: 28px;
+
+    padding:
+        clamp(20px, 4vw, 35px);
+
+    box-shadow:
+        0 25px 70px rgba(15,23,42,0.14);
+
+    backdrop-filter:
+        blur(20px);
 }
 
+
+/* =========================
+   TOP STATS
+========================= */
+
 .stats {
-    display: flex;
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
     gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+
+    margin-bottom: 25px;
 }
 
 .stat {
-    flex: 1;
-    min-width: 200px;
-    background: #f3f4f6;
-    border-radius: 15px;
-    padding: 15px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 17px 19px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fafc,
+            #eef2ff
+        );
+
+    border:
+        1px solid #e5e7eb;
+}
+
+.stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 4px 12px rgba(15,23,42,0.07);
+}
+
+.stat-label {
+    color: #64748b;
+
+    font-size: 12px;
+
+    margin-bottom: 3px;
+}
+
+.stat-value {
+    font-size: 15px;
+
+    font-weight: 750;
+
+    color: #172033;
+}
+
+
+/* =========================
+   AUDIO NOTICE
+========================= */
+
+.audio-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+
+    margin-bottom: 25px;
+
+    padding: 15px 17px;
+
+    border-radius: 17px;
+
+    background:
+        #eff6ff;
+
+    border:
+        1px solid #bfdbfe;
+
+    color: #1e3a8a;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.audio-notice-icon {
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+.audio-notice strong {
+    color: #1e40af;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-wrapper {
+    position: relative;
+
+    margin-bottom: 30px;
+}
+
+.search-icon {
+    position: absolute;
+
+    left: 17px;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    font-size: 18px;
+
+    pointer-events: none;
 }
 
 .search {
     width: 100%;
-    padding: 16px 18px;
-    border: 2px solid #e5e7eb;
-    border-radius: 14px;
-    font-size: 16px;
+
+    padding:
+        17px
+        18px
+        17px
+        48px;
+
+    border:
+        2px solid #e5e7eb;
+
+    border-radius: 17px;
+
     outline: none;
-    margin-bottom: 25px;
+
+    background: white;
+
+    color: #172033;
+
+    font-size: 15px;
+
+    transition:
+        border-color .2s,
+        box-shadow .2s;
+}
+
+.search::placeholder {
+    color: #94a3b8;
 }
 
 .search:focus {
-    border-color: #7c3aed;
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(99,102,241,0.10);
+}
+
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.section-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
 }
 
 .section-title {
-    margin-bottom: 18px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0;
+
     font-size: 22px;
+
+    letter-spacing: -0.4px;
 }
+
+.word-count {
+    padding:
+        6px 11px;
+
+    border-radius: 999px;
+
+    background:
+        #eef2ff;
+
+    color:
+        #4f46e5;
+
+    font-size: 12px;
+
+    font-weight: 750;
+}
+
+
+/* =========================
+   WORD GRID
+========================= */
 
 .words {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
     gap: 15px;
 }
+
+
+/* =========================
+   WORD CARD
+========================= */
 
 .card {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 15px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 18px;
-    padding: 18px;
-    transition: 0.2s;
+
+    min-width: 0;
+
+    padding: 19px;
+
+    border-radius: 20px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e5e7eb;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
 }
 
 .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transform:
+        translateY(-3px);
+
+    border-color:
+        #c7d2fe;
+
+    box-shadow:
+        0 13px 30px
+        rgba(15,23,42,0.10);
+}
+
+
+/* =========================
+   WORD INFO
+========================= */
+
+.word-info {
+    min-width: 0;
 }
 
 .word {
     font-size: 21px;
-    font-weight: bold;
+
+    font-weight: 800;
+
+    color: #111827;
+
+    letter-spacing: -0.3px;
+
+    word-break: break-word;
 }
 
 .ipa {
-    color: #6b7280;
-    margin-top: 5px;
-    font-family: Georgia, serif;
+    margin-top: 6px;
+
+    color: #64748b;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 16px;
 }
 
+
+/* =========================
+   AUDIO BUTTON
+========================= */
+
 .audio-button {
-    border: 0;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
-    color: white;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    font-size: 22px;
-    cursor: pointer;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 54px;
+    height: 54px;
+
     flex-shrink: 0;
-    transition: 0.2s;
+
+    border: none;
+
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #4f46e5
+        );
+
+    font-size: 21px;
+
+    box-shadow:
+        0 8px 18px
+        rgba(79,70,229,0.25);
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease;
 }
 
 .audio-button:hover {
-    transform: scale(1.07);
+    transform:
+        scale(1.06);
+
+    box-shadow:
+        0 11px 23px
+        rgba(79,70,229,0.32);
+}
+
+.audio-button:active {
+    transform:
+        scale(0.95);
 }
 
 .audio-button.playing {
-    animation: pulse 0.9s infinite;
+    animation:
+        pulse 1s infinite;
 }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(124,58,237,0.5); }
-    70% { box-shadow: 0 0 0 14px rgba(124,58,237,0); }
-    100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); }
+
+    0% {
+        box-shadow:
+            0 0 0 0
+            rgba(99,102,241,0.45);
+    }
+
+    70% {
+        box-shadow:
+            0 0 0 13px
+            rgba(99,102,241,0);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(99,102,241,0);
+    }
 }
+
+
+/* =========================
+   NO RESULTS
+========================= */
 
 .no-results {
     display: none;
+
     text-align: center;
-    padding: 25px;
-    color: #6b7280;
+
+    padding:
+        35px 15px;
+
+    color: #64748b;
 }
+
+.no-results-icon {
+    font-size: 35px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     text-align: center;
-    color: rgba(255,255,255,0.75);
-    padding: 25px 15px 35px;
-    font-size: 14px;
+
+    padding:
+        0 15px
+        40px;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.6;
 }
 
 .creator {
-    margin-top: 7px;
-    font-weight: bold;
-    color: white;
+    margin-top: 5px;
+
+    font-weight: 800;
+
+    color: #4f46e5;
 }
 
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 700px) {
+
+    header {
+        padding:
+            45px 18px
+            65px;
+    }
+
+    h1 {
+        letter-spacing: -1px;
+    }
+
+    .container {
+        width:
+            calc(100% - 18px);
+
+        margin-top:
+            -32px;
+    }
+
+    .panel {
+        border-radius: 23px;
+
+        padding:
+            17px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
     .words {
         grid-template-columns: 1fr;
     }
 
-    .panel {
-        padding: 18px;
+    .card {
+        padding: 16px;
     }
 
-    .card {
-        padding: 15px;
+    .audio-button {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 15px;
+    }
+
+    .section-header {
+        align-items: flex-start;
     }
 }
+
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+
+    .word {
+        font-size: 19px;
+    }
+
+    .ipa {
+        font-size: 15px;
+    }
+
+    .audio-button {
+        width: 47px;
+        height: 47px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
-    <div class="badge">🇬🇧 ENGLISH LEARNING</div>
-    <h1>English Pronunciation</h1>
-    <div class="subtitle">
-        Improve your English pronunciation with simple vocabulary
+
+    <div class="header-content">
+
+        <div class="badge">
+            🇬🇧 ENGLISH LEARNING
+        </div>
+
+        <h1>
+            English Pronunciation
+        </h1>
+
+        <div class="subtitle">
+            Practice your English pronunciation
+            with simple vocabulary and British English.
+        </div>
+
     </div>
+
 </header>
 
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <div class="container">
-    <div class="panel">
+
+    <main class="panel">
+
+
+        <!-- STATS -->
 
         <div class="stats">
-            <div class="stat">
-                Mots disponibles : <span id="wordCount">7</span>
-            </div>
 
             <div class="stat">
-                Langue : 🇬🇧 English
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+                <div>
+
+                    <div class="stat-label">
+                        Vocabulary
+                    </div>
+
+                    <div class="stat-value">
+                        <span id="wordCount">7</span>
+                        words available
+                    </div>
+
+                </div>
+
             </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    🇬🇧
+                </div>
+
+                <div>
+
+                    <div class="stat-label">
+                        Pronunciation
+                    </div>
+
+                    <div class="stat-value">
+                        British English
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <input
-            id="search"
-            class="search"
-            type="text"
-            placeholder="🔎 Search for a word..."
-            autocomplete="off"
+
+        <!-- AUDIO NOTICE -->
+
+        <div class="audio-notice">
+
+            <div class="audio-notice-icon">
+                💻
+            </div>
+
+            <div>
+                <strong>
+                    Computer recommendation:
+                </strong>
+
+                For the best audio experience on a computer,
+                <strong>Microsoft Edge is recommended.</strong>
+                Some browsers may have compatibility issues
+                with pronunciation audio.
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-wrapper">
+
+            <span class="search-icon">
+                🔎
+            </span>
+
+            <input
+                id="search"
+                class="search"
+                type="text"
+                placeholder="Search for a word..."
+                autocomplete="off"
+                aria-label="Search vocabulary"
+            >
+
+        </div>
+
+
+        <!-- SECTION -->
+
+        <div class="section-header">
+
+            <h2 class="section-title">
+                📖 Vocabulary
+            </h2>
+
+            <div
+                id="visibleCount"
+                class="word-count"
+            >
+                7 words
+            </div>
+
+        </div>
+
+
+        <!-- WORDS -->
+
+        <div
+            id="words"
+            class="words"
+        ></div>
+
+
+        <!-- NO RESULTS -->
+
+        <div
+            id="noResults"
+            class="no-results"
         >
 
-        <div class="section-title">📚 Vocabulary</div>
+            <div class="no-results-icon">
+                🔎
+            </div>
 
-        <div id="words" class="words"></div>
+            <strong>
+                No word found
+            </strong>
 
-        <div id="noResults" class="no-results">
-            Aucun mot trouvé.
+            <div>
+                Try another search.
+            </div>
+
         </div>
 
-    </div>
+
+    </main>
+
 </div>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-    English Pronunciation • British English 🇬🇧
-    <div class="creator">Créé par Nathan</div>
+
+    <div>
+        English Pronunciation 🇬🇧
+    </div>
+
+    <div class="creator">
+        Created by Nathan
+    </div>
+
 </footer>
+
 
 <script>
 
+
+/* =========================
+   VOCABULARY
+========================= */
+
 const vocabulary = [
+
     {
         word: "throat",
         ipa: "/θrəʊt/"
     },
+
     {
         word: "ache",
         ipa: "/eɪk/"
     },
+
     {
         word: "tooth",
         ipa: "/tuːθ/"
     },
+
     {
         word: "that",
         ipa: "/ðæt/"
     },
+
     {
         word: "with",
         ipa: "/wɪð/"
     },
+
     {
         word: "thanks",
         ipa: "/θæŋks/"
     },
+
     {
         word: "stomach",
         ipa: "/ˈstʌmək/"
     }
+
 ];
 
-const wordsContainer = document.getElementById("words");
-const searchInput = document.getElementById("search");
-const noResults = document.getElementById("noResults");
-const wordCount = document.getElementById("wordCount");
 
-wordCount.textContent = vocabulary.length;
+/* =========================
+   ELEMENTS
+========================= */
+
+const wordsContainer =
+    document.getElementById("words");
+
+const searchInput =
+    document.getElementById("search");
+
+const noResults =
+    document.getElementById("noResults");
+
+const wordCount =
+    document.getElementById("wordCount");
+
+const visibleCount =
+    document.getElementById("visibleCount");
+
+
+wordCount.textContent =
+    vocabulary.length;
+
+
+/* =========================
+   DISPLAY WORDS
+========================= */
 
 function renderWords(list) {
 
     wordsContainer.innerHTML = "";
 
     noResults.style.display =
-        list.length === 0 ? "block" : "none";
+        list.length === 0
+            ? "block"
+            : "none";
+
+
+    visibleCount.textContent =
+        list.length +
+        (list.length > 1 ? " words" : " word");
+
 
     list.forEach(item => {
 
-        const card = document.createElement("div");
+        const card =
+            document.createElement("div");
+
         card.className = "card";
 
-        card.innerHTML = `
-            <div>
-                <div class="word">${item.word}</div>
-                <div class="ipa">${item.ipa}</div>
-            </div>
 
-            <button
-                class="audio-button"
-                aria-label="Pronounce ${item.word}"
-                onclick="pronounce('${item.word}', this)"
-            >
-                🔊
-            </button>
-        `;
+        const info =
+            document.createElement("div");
+
+        info.className =
+            "word-info";
+
+
+        const word =
+            document.createElement("div");
+
+        word.className =
+            "word";
+
+        word.textContent =
+            item.word;
+
+
+        const ipa =
+            document.createElement("div");
+
+        ipa.className =
+            "ipa";
+
+        ipa.textContent =
+            item.ipa;
+
+
+        info.appendChild(word);
+        info.appendChild(ipa);
+
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "audio-button";
+
+        button.type =
+            "button";
+
+        button.textContent =
+            "🔊";
+
+        button.setAttribute(
+            "aria-label",
+            "Pronounce " + item.word
+        );
+
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                pronounce(
+                    item.word,
+                    button
+                );
+
+            }
+        );
+
+
+        card.appendChild(info);
+        card.appendChild(button);
+
 
         wordsContainer.appendChild(card);
+
     });
+
 }
+
+
+/* =========================
+   FIND BRITISH VOICE
+========================= */
 
 function getBritishVoice() {
 
-    const voices = speechSynthesis.getVoices();
+    const voices =
+        window.speechSynthesis
+            .getVoices();
 
-    // Priorité absolue aux voix britanniques
-    let voice = voices.find(v =>
-        v.lang && v.lang.toLowerCase() === "en-gb"
-    );
+
+    /*
+       First choice:
+       exact British English.
+    */
+
+    let voice =
+        voices.find(
+            v =>
+                v.lang &&
+                v.lang.toLowerCase()
+                === "en-gb"
+        );
+
+
+    /*
+       Second choice:
+       anything beginning with en-GB.
+    */
 
     if (!voice) {
-        voice = voices.find(v =>
-            v.lang && v.lang.toLowerCase().startsWith("en-gb")
-        );
+
+        voice =
+            voices.find(
+                v =>
+                    v.lang &&
+                    v.lang.toLowerCase()
+                    .startsWith("en-gb")
+            );
+
     }
+
 
     return voice;
 }
 
-function pronounce(word, button) {
 
-    speechSynthesis.cancel();
+/* =========================
+   PRONOUNCE
+========================= */
+
+function pronounce(
+    word,
+    button
+) {
+
+    const synth =
+        window.speechSynthesis;
+
+
+    synth.cancel();
+
 
     document
-        .querySelectorAll(".audio-button")
-        .forEach(btn => btn.classList.remove("playing"));
-
-    const voice = getBritishVoice();
-
-    if (!voice) {
-
-        alert(
-            "Aucune voix anglaise britannique (English UK) n'est disponible sur cet appareil."
+        .querySelectorAll(
+            ".audio-button"
+        )
+        .forEach(
+            btn =>
+                btn.classList
+                    .remove("playing")
         );
 
-        return;
-    }
+
+    /*
+       Try to get a British
+       English voice.
+    */
+
+    const voice =
+        getBritishVoice();
+
+
+    /*
+       If the browser has no
+       British voice, fall back
+       to en-GB requested language.
+
+       This keeps compatibility
+       with browsers such as Edge.
+    */
 
     const utterance =
-        new SpeechSynthesisUtterance(word);
-
-    utterance.voice = voice;
-    utterance.lang = "en-GB";
-
-    utterance.rate = 0.78;
-    utterance.pitch = 1;
-
-    button.classList.add("playing");
-
-    utterance.onend = function() {
-        button.classList.remove("playing");
-    };
-
-    utterance.onerror = function() {
-        button.classList.remove("playing");
-    };
-
-    speechSynthesis.speak(utterance);
-}
-
-searchInput.addEventListener("input", function() {
-
-    const query =
-        this.value.trim().toLowerCase();
-
-    const filtered =
-        vocabulary.filter(item =>
-            item.word.toLowerCase().includes(query)
+        new SpeechSynthesisUtterance(
+            word
         );
 
-    renderWords(filtered);
-});
 
-// Certaines voix sont chargées après le démarrage du navigateur.
-speechSynthesis.addEventListener(
-    "voiceschanged",
-    () => {}
+    utterance.lang =
+        "en-GB";
+
+
+    if (voice) {
+        utterance.voice =
+            voice;
+    }
+
+
+    /*
+       Slightly slower speed
+       for language learning.
+    */
+
+    utterance.rate =
+        0.78;
+
+    utterance.pitch =
+        1;
+
+
+    button.classList.add(
+        "playing"
+    );
+
+
+    utterance.onend =
+        function() {
+
+            button.classList.remove(
+                "playing"
+            );
+
+        };
+
+
+    utterance.onerror =
+        function() {
+
+            button.classList.remove(
+                "playing"
+            );
+
+        };
+
+
+    synth.speak(
+        utterance
+    );
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+searchInput.addEventListener(
+    "input",
+    function() {
+
+        const query =
+            this.value
+                .trim()
+                .toLowerCase();
+
+
+        const filtered =
+            vocabulary.filter(
+                item =>
+                    item.word
+                        .toLowerCase()
+                        .includes(query)
+            );
+
+
+        renderWords(
+            filtered
+        );
+
+    }
 );
 
-renderWords(vocabulary);
+
+/*
+   Browsers sometimes load voices
+   after the page has started.
+*/
+
+if (
+    "speechSynthesis" in window
+) {
+
+    window.speechSynthesis
+        .addEventListener(
+            "voiceschanged",
+            function() {}
+        );
+
+}
+
+
+/* =========================
+   INITIAL DISPLAY
+========================= */
+
+renderWords(
+    vocabulary
+);
 
 </script>
 
