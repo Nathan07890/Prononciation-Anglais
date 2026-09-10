@@ -1,164 +1,152 @@
+```html
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>English Pronunciation 🇬🇧</title>
+<title>English Pronunciation</title>
 
 <style>
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    margin: 0;
     min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
     background:
-        radial-gradient(circle at top left, #8b5cf6 0%, transparent 35%),
-        radial-gradient(circle at bottom right, #6366f1 0%, transparent 35%),
+        radial-gradient(circle at top left, #7c3aed 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #2563eb 0%, transparent 35%),
         linear-gradient(135deg, #111827, #312e81);
-    color: #1f2937;
-    padding: 25px;
-}
-
-.container {
-    max-width: 1050px;
-    margin: auto;
+    color: #111827;
 }
 
 header {
-    text-align: center;
+    background: rgba(15, 23, 42, 0.95);
     color: white;
-    padding: 25px 10px 30px;
+    padding: 38px 20px;
+    text-align: center;
 }
 
 .badge {
     display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 8px 16px;
-    border-radius: 30px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 15px;
+    border-radius: 999px;
     font-size: 13px;
-    font-weight: bold;
     letter-spacing: 1px;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
 h1 {
-    font-size: clamp(35px, 6vw, 58px);
-    margin-bottom: 10px;
+    margin: 0;
+    font-size: clamp(32px, 6vw, 52px);
 }
 
 .subtitle {
-    opacity: 0.85;
-    font-size: 17px;
+    margin-top: 12px;
+    opacity: 0.8;
+    font-size: 16px;
+}
+
+.container {
+    width: min(1050px, calc(100% - 30px));
+    margin: 30px auto;
 }
 
 .panel {
-    background: rgba(255,255,255,0.94);
-    border-radius: 28px;
-    padding: 30px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.93);
+    border-radius: 24px;
+    padding: 25px;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.25);
 }
 
 .stats {
     display: flex;
-    justify-content: space-between;
     gap: 15px;
     flex-wrap: wrap;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .stat {
+    flex: 1;
+    min-width: 200px;
     background: #f3f4f6;
     border-radius: 15px;
-    padding: 13px 18px;
+    padding: 15px;
     font-weight: bold;
 }
 
 .search {
     width: 100%;
-    border: 2px solid #e5e7eb;
-    border-radius: 16px;
     padding: 16px 18px;
+    border: 2px solid #e5e7eb;
+    border-radius: 14px;
     font-size: 16px;
     outline: none;
-    margin-bottom: 28px;
-    transition: 0.2s;
+    margin-bottom: 25px;
 }
 
 .search:focus {
     border-color: #7c3aed;
-    box-shadow: 0 0 0 4px rgba(124,58,237,0.12);
 }
 
 .section-title {
-    font-size: 25px;
     margin-bottom: 18px;
-}
-
-.count {
-    color: #6b7280;
-    margin-bottom: 20px;
+    font-size: 22px;
 }
 
 .words {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 15px;
 }
 
 .card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 20px;
-    padding: 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 18px;
+    transition: 0.2s;
 }
 
 .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .word {
-    font-size: 25px;
+    font-size: 21px;
     font-weight: bold;
-    margin-bottom: 7px;
 }
 
 .ipa {
-    color: #7c3aed;
-    font-size: 17px;
+    color: #6b7280;
+    margin-top: 5px;
     font-family: Georgia, serif;
 }
 
 .audio-button {
-    flex-shrink: 0;
-    width: 58px;
-    height: 58px;
-    border: none;
-    border-radius: 50%;
+    border: 0;
     background: linear-gradient(135deg, #7c3aed, #4f46e5);
     color: white;
-    font-size: 23px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: 22px;
     cursor: pointer;
-    box-shadow: 0 7px 18px rgba(79,70,229,0.35);
-    transition: transform 0.15s;
+    flex-shrink: 0;
+    transition: 0.2s;
 }
 
 .audio-button:hover {
-    transform: scale(1.08);
-}
-
-.audio-button:active {
-    transform: scale(0.94);
+    transform: scale(1.07);
 }
 
 .audio-button.playing {
@@ -166,52 +154,42 @@ h1 {
 }
 
 @keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(124,58,237,0.5);
-    }
-    50% {
-        box-shadow: 0 0 0 13px rgba(124,58,237,0);
-    }
+    0% { box-shadow: 0 0 0 0 rgba(124,58,237,0.5); }
+    70% { box-shadow: 0 0 0 14px rgba(124,58,237,0); }
+    100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); }
 }
 
 .no-results {
     display: none;
     text-align: center;
-    padding: 35px;
+    padding: 25px;
     color: #6b7280;
 }
 
 footer {
     text-align: center;
-    color: rgba(255,255,255,0.7);
-    padding: 25px;
+    color: rgba(255,255,255,0.75);
+    padding: 25px 15px 35px;
     font-size: 14px;
 }
 
+.creator {
+    margin-top: 7px;
+    font-weight: bold;
+    color: white;
+}
+
 @media (max-width: 700px) {
-    body {
-        padding: 12px;
-    }
-
-    .panel {
-        padding: 20px;
-        border-radius: 22px;
-    }
-
     .words {
         grid-template-columns: 1fr;
     }
 
-    .stats {
-        flex-direction: column;
+    .panel {
+        padding: 18px;
     }
 
-    .stat {
-        text-align: center;
-    }
-
-    .word {
-        font-size: 22px;
+    .card {
+        padding: 15px;
     }
 }
 </style>
@@ -219,224 +197,204 @@ footer {
 
 <body>
 
-<div class="container">
-
 <header>
     <div class="badge">🇬🇧 ENGLISH LEARNING</div>
     <h1>English Pronunciation</h1>
-    <p class="subtitle">Improve your English pronunciation with British English</p>
+    <div class="subtitle">
+        Improve your English pronunciation with simple vocabulary
+    </div>
 </header>
 
-<div class="panel">
+<div class="container">
+    <div class="panel">
 
-    <div class="stats">
-        <div class="stat">📚 Mots disponibles : <span id="total">7</span></div>
-        <div class="stat">🇬🇧 Langue : English</div>
-    </div>
-
-    <input
-        type="text"
-        id="search"
-        class="search"
-        placeholder="🔎 Search for a word..."
-        autocomplete="off"
-    >
-
-    <h2 class="section-title">📚 Vocabulary</h2>
-    <p class="count"><span id="visibleCount">7</span> words</p>
-
-    <div class="words" id="words">
-
-        <div class="card" data-word="throat">
-            <div>
-                <div class="word">throat</div>
-                <div class="ipa">/θrəʊt/</div>
+        <div class="stats">
+            <div class="stat">
+                Mots disponibles : <span id="wordCount">7</span>
             </div>
-            <button class="audio-button" onclick="prononcer('throat', this)" aria-label="Listen to throat">
-                🔊
-            </button>
+
+            <div class="stat">
+                Langue : 🇬🇧 English
+            </div>
         </div>
 
-        <div class="card" data-word="ache">
-            <div>
-                <div class="word">ache</div>
-                <div class="ipa">/eɪk/</div>
-            </div>
-            <button class="audio-button" onclick="prononcer('ache', this)" aria-label="Listen to ache">
-                🔊
-            </button>
-        </div>
+        <input
+            id="search"
+            class="search"
+            type="text"
+            placeholder="🔎 Search for a word..."
+            autocomplete="off"
+        >
 
-        <div class="card" data-word="tooth">
-            <div>
-                <div class="word">tooth</div>
-                <div class="ipa">/tuːθ/</div>
-            </div>
-            <button class="audio-button" onclick="prononcer('tooth', this)" aria-label="Listen to tooth">
-                🔊
-            </button>
-        </div>
+        <div class="section-title">📚 Vocabulary</div>
 
-        <div class="card" data-word="that">
-            <div>
-                <div class="word">that</div>
-                <div class="ipa">/ðæt/</div>
-            </div>
-            <button class="audio-button" onclick="prononcer('that', this)" aria-label="Listen to that">
-                🔊
-            </button>
-        </div>
+        <div id="words" class="words"></div>
 
-        <div class="card" data-word="with">
-            <div>
-                <div class="word">with</div>
-                <div class="ipa">/wɪð/</div>
-            </div>
-            <button class="audio-button" onclick="prononcer('with', this)" aria-label="Listen to with">
-                🔊
-            </button>
-        </div>
-
-        <div class="card" data-word="thanks">
-            <div>
-                <div class="word">thanks</div>
-                <div class="ipa">/θæŋks/</div>
-            </div>
-            <button class="audio-button" onclick="prononcer('thanks', this)" aria-label="Listen to thanks">
-                🔊
-            </button>
-        </div>
-
-        <div class="card" data-word="stomach">
-            <div>
-                <div class="word">stomach</div>
-                <div class="ipa">/ˈstʌmək/</div>
-            </div>
-            <button class="audio-button" onclick="prononcer('stomach', this)" aria-label="Listen to stomach">
-                🔊
-            </button>
+        <div id="noResults" class="no-results">
+            Aucun mot trouvé.
         </div>
 
     </div>
-
-    <div class="no-results" id="noResults">
-        😕 Aucun mot trouvé.
-    </div>
-
 </div>
 
 <footer>
-    🇬🇧 English Pronunciation • British English
+    English Pronunciation • British English 🇬🇧
+    <div class="creator">Créé par Nathan</div>
 </footer>
-
-</div>
 
 <script>
 
-let voices = [];
+const vocabulary = [
+    {
+        word: "throat",
+        ipa: "/θrəʊt/"
+    },
+    {
+        word: "ache",
+        ipa: "/eɪk/"
+    },
+    {
+        word: "tooth",
+        ipa: "/tuːθ/"
+    },
+    {
+        word: "that",
+        ipa: "/ðæt/"
+    },
+    {
+        word: "with",
+        ipa: "/wɪð/"
+    },
+    {
+        word: "thanks",
+        ipa: "/θæŋks/"
+    },
+    {
+        word: "stomach",
+        ipa: "/ˈstʌmək/"
+    }
+];
 
-function chargerVoix() {
-    voices = speechSynthesis.getVoices();
+const wordsContainer = document.getElementById("words");
+const searchInput = document.getElementById("search");
+const noResults = document.getElementById("noResults");
+const wordCount = document.getElementById("wordCount");
+
+wordCount.textContent = vocabulary.length;
+
+function renderWords(list) {
+
+    wordsContainer.innerHTML = "";
+
+    noResults.style.display =
+        list.length === 0 ? "block" : "none";
+
+    list.forEach(item => {
+
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+            <div>
+                <div class="word">${item.word}</div>
+                <div class="ipa">${item.ipa}</div>
+            </div>
+
+            <button
+                class="audio-button"
+                aria-label="Pronounce ${item.word}"
+                onclick="pronounce('${item.word}', this)"
+            >
+                🔊
+            </button>
+        `;
+
+        wordsContainer.appendChild(card);
+    });
 }
 
-chargerVoix();
+function getBritishVoice() {
 
-if ('onvoiceschanged' in speechSynthesis) {
-    speechSynthesis.onvoiceschanged = chargerVoix;
-}
+    const voices = speechSynthesis.getVoices();
 
-function trouverVoixBritannique() {
-
-    let voixGB = voices.find(v =>
+    // Priorité absolue aux voix britanniques
+    let voice = voices.find(v =>
         v.lang && v.lang.toLowerCase() === "en-gb"
     );
 
-    if (voixGB) return voixGB;
+    if (!voice) {
+        voice = voices.find(v =>
+            v.lang && v.lang.toLowerCase().startsWith("en-gb")
+        );
+    }
 
-    voixGB = voices.find(v =>
-        v.lang && v.lang.toLowerCase().startsWith("en-gb")
-    );
-
-    if (voixGB) return voixGB;
-
-    return voices.find(v =>
-        v.lang && v.lang.toLowerCase().startsWith("en")
-    );
+    return voice;
 }
 
-function prononcer(mot, bouton) {
-
-    if (!("speechSynthesis" in window)) {
-        alert("La synthèse vocale n'est pas disponible sur ce navigateur.");
-        return;
-    }
+function pronounce(word, button) {
 
     speechSynthesis.cancel();
 
-    document.querySelectorAll(".audio-button").forEach(btn => {
-        btn.classList.remove("playing");
-    });
+    document
+        .querySelectorAll(".audio-button")
+        .forEach(btn => btn.classList.remove("playing"));
 
-    const voix = new SpeechSynthesisUtterance(mot);
+    const voice = getBritishVoice();
 
-    voix.lang = "en-GB";
-    voix.rate = 0.78;
-    voix.pitch = 1;
+    if (!voice) {
 
-    const voixChoisie = trouverVoixBritannique();
+        alert(
+            "Aucune voix anglaise britannique (English UK) n'est disponible sur cet appareil."
+        );
 
-    if (voixChoisie) {
-        voix.voice = voixChoisie;
-        voix.lang = voixChoisie.lang;
+        return;
     }
 
-    bouton.classList.add("playing");
+    const utterance =
+        new SpeechSynthesisUtterance(word);
 
-    voix.onend = function() {
-        bouton.classList.remove("playing");
+    utterance.voice = voice;
+    utterance.lang = "en-GB";
+
+    utterance.rate = 0.78;
+    utterance.pitch = 1;
+
+    button.classList.add("playing");
+
+    utterance.onend = function() {
+        button.classList.remove("playing");
     };
 
-    voix.onerror = function() {
-        bouton.classList.remove("playing");
+    utterance.onerror = function() {
+        button.classList.remove("playing");
     };
 
-    speechSynthesis.speak(voix);
+    speechSynthesis.speak(utterance);
 }
 
-const search = document.getElementById("search");
-const cards = document.querySelectorAll(".card");
-const visibleCount = document.getElementById("visibleCount");
-const noResults = document.getElementById("noResults");
+searchInput.addEventListener("input", function() {
 
-search.addEventListener("input", function() {
+    const query =
+        this.value.trim().toLowerCase();
 
-    const recherche = this.value.toLowerCase().trim();
-    let compteur = 0;
+    const filtered =
+        vocabulary.filter(item =>
+            item.word.toLowerCase().includes(query)
+        );
 
-    cards.forEach(card => {
-
-        const mot = card.dataset.word.toLowerCase();
-
-        if (mot.includes(recherche)) {
-            card.style.display = "flex";
-            compteur++;
-        } else {
-            card.style.display = "none";
-        }
-
-    });
-
-    visibleCount.textContent = compteur;
-
-    if (compteur === 0) {
-        noResults.style.display = "block";
-    } else {
-        noResults.style.display = "none";
-    }
-
+    renderWords(filtered);
 });
+
+// Certaines voix sont chargées après le démarrage du navigateur.
+speechSynthesis.addEventListener(
+    "voiceschanged",
+    () => {}
+);
+
+renderWords(vocabulary);
 
 </script>
 
 </body>
 </html>
+```
