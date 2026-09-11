@@ -742,7 +742,6 @@ footer {
 
 <header>
 
-    <!-- BOUTON MENU -->
     <button
         class="menu-button"
         id="menu-button"
@@ -812,7 +811,7 @@ footer {
                     </div>
 
                     <div class="stat-value">
-                        <span id="total-count">7</span>
+                        <span id="total-count">0</span>
                         mots disponibles
                     </div>
                 </div>
@@ -883,7 +882,7 @@ footer {
                 id="visible-count"
                 class="count"
             >
-                7 mots
+                0 mots
             </div>
 
         </div>
@@ -996,42 +995,90 @@ footer {
 </div>
 
 
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <script>
 
 /* =========================
-   VOCABULAIRE
+   SUPABASE
 ========================= */
 
-const vocabulary = [
+const SUPABASE_URL =
+    "https://fhpxnkahornwxpjdhjju.supabase.co";
+
+
+/*
+   ⚠️ CHANGE UNIQUEMENT CETTE VALEUR
+
+   Mets ici ta clé :
+   sb_publishable_...
+
+   NE METS JAMAIS :
+   sb_secret_...
+*/
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_uXwFKyJoyTXE8pTFGsuaMA_004Nx4oG";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =========================
+   VOCABULAIRE DE SECOURS
+========================= */
+
+const fallbackVocabulary = [
     {
+        id: 1,
         word: "throat",
         ipa: "/θrəʊt/"
     },
     {
+        id: 2,
         word: "ache",
         ipa: "/eɪk/"
     },
     {
+        id: 3,
         word: "tooth",
         ipa: "/tuːθ/"
     },
     {
+        id: 4,
         word: "that",
         ipa: "/ðæt/"
     },
     {
+        id: 5,
         word: "with",
         ipa: "/wɪð/"
     },
     {
+        id: 6,
         word: "thanks",
         ipa: "/θæŋks/"
     },
     {
+        id: 7,
         word: "stomach",
         ipa: "/ˈstʌmək/"
     }
 ];
+
+
+/* =========================
+   VOCABULAIRE ACTUEL
+========================= */
+
+let vocabulary = [];
 
 
 /* =========================
@@ -1085,8 +1132,6 @@ menuButton.addEventListener(
     }
 );
 
-
-/* Fermer le menu en cliquant ailleurs */
 
 document.addEventListener(
     "click",
@@ -1186,39 +1231,103 @@ adminOverlay.addEventListener(
 );
 
 
-/* Vérification du code de TEST */
+/* =========================
+   VÉRIFICATION DU CODE
+========================= */
 
-function checkAdminCode() {
+async function checkAdminCode() {
 
     const enteredCode =
         adminCode.value.trim();
 
-    /*
-       CODE TEMPORAIRE DE TEST
 
-       IMPORTANT :
-       Ce code ne sera PAS utilisé
-       pour la vraie sécurité.
-    */
+    if (!enteredCode) {
 
-    const testCode = "1234";
-
-
-    if (enteredCode === testCode) {
-
-        adminError.classList.remove("show");
-
-        adminOverlay.classList.remove("open");
-
-        alert(
-            "✅ Connexion réussie !\n\nL'espace administrateur sera ajouté dans la prochaine étape."
-        );
-
-    } else {
+        adminError.textContent =
+            "❌ Entre le code administrateur.";
 
         adminError.classList.add("show");
 
         adminCode.focus();
+
+        return;
+    }
+
+
+    adminLogin.disabled = true;
+
+    adminLogin.textContent =
+        "Vérification...";
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient.rpc(
+                "admin_check_code",
+                {
+                    p_code: enteredCode
+                }
+            );
+
+
+        if (error) {
+
+            console.error(
+                "Erreur Supabase :",
+                error
+            );
+
+            adminError.textContent =
+                "❌ Impossible de vérifier le code.";
+
+            adminError.classList.add("show");
+
+            return;
+        }
+
+
+        if (data === true) {
+
+            adminError.classList.remove("show");
+
+            adminOverlay.classList.remove("open");
+
+            alert(
+                "✅ Connexion réussie !\n\nL'espace administrateur sera ajouté dans la prochaine étape."
+            );
+
+        } else {
+
+            adminError.textContent =
+                "❌ Code incorrect.";
+
+            adminError.classList.add("show");
+
+            adminCode.focus();
+
+            adminCode.select();
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Erreur :",
+            error
+        );
+
+        adminError.textContent =
+            "❌ Une erreur est survenue.";
+
+        adminError.classList.add("show");
+
+    } finally {
+
+        adminLogin.disabled = false;
+
+        adminLogin.textContent =
+            "Se connecter";
 
     }
 
@@ -1254,11 +1363,81 @@ adminCode.addEventListener(
 
 
 /* =========================
-   COMPTEUR
+   CHARGER LES MOTS
 ========================= */
 
-totalCount.textContent =
-    vocabulary.length;
+async function loadVocabulary() {
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("words")
+                .select("id, word, pronunciation")
+                .order("id", {
+                    ascending: true
+                });
+
+
+        if (error) {
+
+            console.error(
+                "Erreur lors du chargement des mots :",
+                error
+            );
+
+            vocabulary =
+                fallbackVocabulary;
+
+        } else {
+
+            vocabulary =
+                (data || []).map(function(item) {
+
+                    return {
+                        id: item.id,
+                        word: item.word,
+                        ipa: item.pronunciation || ""
+                    };
+
+                });
+
+
+            /*
+               Si la table est encore vide,
+               on garde temporairement les 7 mots
+               pour que le site reste utilisable.
+            */
+
+            if (vocabulary.length === 0) {
+
+                vocabulary =
+                    fallbackVocabulary;
+
+            }
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Erreur :",
+            error
+        );
+
+        vocabulary =
+            fallbackVocabulary;
+
+    }
+
+
+    totalCount.textContent =
+        vocabulary.length;
+
+
+    displayWords(vocabulary);
+
+}
 
 
 /* =========================
@@ -1279,6 +1458,7 @@ function displayWords(list) {
         noResults.style.display = "block";
 
         return;
+
     }
 
 
@@ -1290,19 +1470,22 @@ function displayWords(list) {
         const card =
             document.createElement("div");
 
-        card.className = "word-card";
+        card.className =
+            "word-card";
 
 
         const info =
             document.createElement("div");
 
-        info.className = "word-info";
+        info.className =
+            "word-info";
 
 
         const word =
             document.createElement("div");
 
-        word.className = "word";
+        word.className =
+            "word";
 
         word.textContent =
             item.word;
@@ -1311,7 +1494,8 @@ function displayWords(list) {
         const ipa =
             document.createElement("div");
 
-        ipa.className = "ipa";
+        ipa.className =
+            "ipa";
 
         ipa.textContent =
             item.ipa;
@@ -1327,7 +1511,8 @@ function displayWords(list) {
         button.className =
             "audio-button";
 
-        button.type = "button";
+        button.type =
+            "button";
 
         button.textContent =
             "🔊";
@@ -1357,6 +1542,7 @@ function displayWords(list) {
         wordsContainer.appendChild(card);
 
     });
+
 }
 
 
@@ -1551,7 +1737,7 @@ if ("speechSynthesis" in window) {
    DÉMARRAGE
 ========================= */
 
-displayWords(vocabulary);
+loadVocabulary();
 
 </script>
 
