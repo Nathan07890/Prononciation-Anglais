@@ -32,13 +32,7 @@ header {
     text-align: center;
     color: white;
 
-    background: linear-gradient(
-        135deg,
-        #111827,
-        #312e81,
-        #1e3a8a
-    );
-
+    background: linear-gradient(135deg,#111827,#312e81,#1e3a8a);
     box-shadow: 0 15px 45px rgba(15,23,42,.25);
 }
 
@@ -68,18 +62,13 @@ header {
 
     color: white;
     font-size: 24px;
-
     cursor: pointer;
-
-    transition: .2s;
 }
 
 .menu-button:hover {
     background: rgba(255,255,255,.18);
     transform: scale(1.05);
 }
-
-/* MENU DÉROULANT */
 
 .menu {
     position: fixed;
@@ -88,14 +77,12 @@ header {
     z-index: 100;
 
     width: 230px;
-
     padding: 10px;
 
     border: 1px solid #e5e7eb;
     border-radius: 18px;
 
     background: rgba(255,255,255,.97);
-
     box-shadow: 0 20px 50px rgba(15,23,42,.2);
 
     display: none;
@@ -103,50 +90,29 @@ header {
 
 .menu.open {
     display: block;
-    animation: menuAppear .18s ease;
-}
-
-@keyframes menuAppear {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .menu-title {
     padding: 10px 12px 8px;
-
     color: #64748b;
-
     font-size: 12px;
     font-weight: bold;
 }
 
 .menu-item {
     width: 100%;
-
     padding: 13px 12px;
 
     border: none;
     border-radius: 12px;
 
     background: transparent;
-
     color: #172033;
 
     text-align: left;
-
     font-size: 14px;
     font-weight: bold;
-
     cursor: pointer;
-
-    transition: .15s;
 }
 
 .menu-item:hover {
@@ -154,7 +120,7 @@ header {
     color: #4f46e5;
 }
 
-/* BADGE */
+/* HEADER */
 
 .badge {
     display: inline-block;
@@ -165,8 +131,8 @@ header {
     border: 1px solid rgba(255,255,255,.2);
 
     background: rgba(255,255,255,.1);
-
     color: #e0e7ff;
+
     font-size: 13px;
     font-weight: bold;
     letter-spacing: .8px;
@@ -174,7 +140,7 @@ header {
 
 h1 {
     margin: 0;
-    font-size: clamp(38px, 7vw, 64px);
+    font-size: clamp(38px,7vw,64px);
     line-height: 1.05;
     letter-spacing: -2px;
 }
@@ -184,7 +150,6 @@ h1 {
     margin: 20px auto 0;
 
     color: rgba(255,255,255,.78);
-
     font-size: 17px;
     line-height: 1.6;
 }
@@ -195,8 +160,7 @@ h1 {
     position: relative;
     z-index: 5;
 
-    width: min(1100px, calc(100% - 30px));
-
+    width: min(1100px,calc(100% - 30px));
     margin: -40px auto 40px;
 }
 
@@ -207,17 +171,15 @@ h1 {
     border: 1px solid rgba(255,255,255,.9);
 
     background: rgba(255,255,255,.94);
-
     box-shadow: 0 25px 70px rgba(15,23,42,.14);
 }
 
-/* STATISTIQUES */
+/* STATS */
 
 .stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-
     margin-bottom: 25px;
 }
 
@@ -231,11 +193,7 @@ h1 {
     border-radius: 18px;
     border: 1px solid #e5e7eb;
 
-    background: linear-gradient(
-        135deg,
-        #f8fafc,
-        #eef2ff
-    );
+    background: linear-gradient(135deg,#f8fafc,#eef2ff);
 }
 
 .stat-icon {
@@ -248,9 +206,7 @@ h1 {
     flex-shrink: 0;
 
     border-radius: 13px;
-
     background: white;
-
     font-size: 20px;
 
     box-shadow: 0 4px 12px rgba(15,23,42,.07);
@@ -258,7 +214,6 @@ h1 {
 
 .stat-label {
     margin-bottom: 4px;
-
     color: #64748b;
     font-size: 12px;
 }
@@ -269,7 +224,7 @@ h1 {
     font-weight: bold;
 }
 
-/* RECOMMANDATION */
+/* NOTICE */
 
 .notice {
     display: flex;
@@ -283,9 +238,7 @@ h1 {
     border: 1px solid #bfdbfe;
 
     background: #eff6ff;
-
     color: #1e3a8a;
-
     font-size: 13px;
 }
 
@@ -304,9 +257,7 @@ h1 {
     position: absolute;
     left: 17px;
     top: 50%;
-
     transform: translateY(-50%);
-
     font-size: 18px;
     pointer-events: none;
 }
@@ -320,52 +271,36 @@ h1 {
     border-radius: 17px;
 
     outline: none;
-
     background: white;
     color: #172033;
-
     font-size: 15px;
-
-    transition: .2s;
-}
-
-#search::placeholder {
-    color: #94a3b8;
 }
 
 #search:focus {
     border-color: #6366f1;
-
-    box-shadow:
-        0 0 0 4px rgba(99,102,241,.1);
+    box-shadow: 0 0 0 4px rgba(99,102,241,.1);
 }
 
-/* TITRE VOCABULAIRE */
+/* SECTION */
 
 .section-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 15px;
-
     margin-bottom: 18px;
 }
 
 .section-title {
     margin: 0;
-
     font-size: 22px;
 }
 
 .count {
     padding: 6px 11px;
-
     border-radius: 999px;
-
     background: #eef2ff;
     color: #4f46e5;
-
     font-size: 12px;
     font-weight: bold;
 }
@@ -382,7 +317,6 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 15px;
 
     padding: 19px;
@@ -391,37 +325,29 @@ h1 {
     border: 1px solid #e5e7eb;
 
     background: white;
-
     transition: .2s ease;
 }
 
 .word-card:hover {
     transform: translateY(-3px);
-
     border-color: #c7d2fe;
-
-    box-shadow:
-        0 13px 30px rgba(15,23,42,.1);
+    box-shadow: 0 13px 30px rgba(15,23,42,.1);
 }
 
 .word {
     color: #111827;
-
     font-size: 21px;
     font-weight: 800;
 }
 
 .ipa {
     margin-top: 6px;
-
     color: #64748b;
-
-    font-family: Georgia, "Times New Roman", serif;
-
+    font-family: Georgia,"Times New Roman",serif;
     font-size: 16px;
 }
 
-/* BOUTON AUDIO */
+/* AUDIO */
 
 .audio-button {
     display: flex;
@@ -437,28 +363,15 @@ h1 {
 
     cursor: pointer;
 
-    background: linear-gradient(
-        135deg,
-        #7c3aed,
-        #4f46e5
-    );
-
+    background: linear-gradient(135deg,#7c3aed,#4f46e5);
     color: white;
 
     font-size: 21px;
-
-    box-shadow:
-        0 8px 18px rgba(79,70,229,.25);
-
-    transition: .18s ease;
+    box-shadow: 0 8px 18px rgba(79,70,229,.25);
 }
 
 .audio-button:hover {
     transform: scale(1.06);
-}
-
-.audio-button:active {
-    transform: scale(.95);
 }
 
 .audio-button.playing {
@@ -466,31 +379,17 @@ h1 {
 }
 
 @keyframes pulse {
-    0% {
-        box-shadow:
-            0 0 0 0 rgba(99,102,241,.5);
-    }
-
-    70% {
-        box-shadow:
-            0 0 0 13px rgba(99,102,241,0);
-    }
-
-    100% {
-        box-shadow:
-            0 0 0 0 rgba(99,102,241,0);
-    }
+    0% { box-shadow: 0 0 0 0 rgba(99,102,241,.5); }
+    70% { box-shadow: 0 0 0 13px rgba(99,102,241,0); }
+    100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
 }
 
-/* AUCUN RÉSULTAT */
+/* NO RESULT */
 
 #no-results {
     display: none;
-
     padding: 35px 15px;
-
     text-align: center;
-
     color: #64748b;
 }
 
@@ -499,26 +398,22 @@ h1 {
     font-size: 35px;
 }
 
-/* PIED DE PAGE */
+/* FOOTER */
 
 footer {
     padding: 0 15px 40px;
-
     text-align: center;
-
     color: #64748b;
-
     font-size: 13px;
 }
 
 .creator {
     margin-top: 5px;
-
     color: #4f46e5;
     font-weight: bold;
 }
 
-/* FENÊTRE ADMIN */
+/* MODALES */
 
 .admin-overlay {
     position: fixed;
@@ -540,29 +435,16 @@ footer {
 }
 
 .admin-box {
-    width: min(400px, 100%);
+    width: min(500px,100%);
+    max-height: 90vh;
+    overflow-y: auto;
 
     padding: 28px;
 
     border-radius: 24px;
-
     background: white;
 
     box-shadow: 0 30px 80px rgba(15,23,42,.3);
-
-    animation: adminAppear .2s ease;
-}
-
-@keyframes adminAppear {
-    from {
-        opacity: 0;
-        transform: scale(.96) translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
 }
 
 .admin-icon {
@@ -572,62 +454,52 @@ footer {
 
     width: 55px;
     height: 55px;
-
     margin-bottom: 15px;
 
     border-radius: 16px;
-
     background: #eef2ff;
-
     font-size: 25px;
 }
 
 .admin-title {
     margin: 0 0 8px;
-
     font-size: 24px;
 }
 
 .admin-description {
     margin-bottom: 20px;
-
     color: #64748b;
-
     font-size: 14px;
     line-height: 1.5;
 }
 
-#admin-code {
+.admin-input {
     width: 100%;
-
-    padding: 14px 15px;
+    padding: 13px 14px;
+    margin-bottom: 10px;
 
     border: 2px solid #e5e7eb;
     border-radius: 14px;
 
     outline: none;
-
-    font-size: 16px;
-
-    transition: .2s;
+    font-size: 15px;
 }
 
-#admin-code:focus {
+.admin-input:focus {
     border-color: #6366f1;
-
-    box-shadow:
-        0 0 0 4px rgba(99,102,241,.1);
+    box-shadow: 0 0 0 4px rgba(99,102,241,.1);
 }
 
 .admin-actions {
     display: flex;
     gap: 10px;
-
     margin-top: 15px;
 }
 
 .admin-cancel,
-.admin-login {
+.admin-login,
+.admin-save,
+.admin-delete {
     flex: 1;
 
     padding: 13px;
@@ -637,7 +509,6 @@ footer {
 
     font-size: 14px;
     font-weight: bold;
-
     cursor: pointer;
 }
 
@@ -646,23 +517,21 @@ footer {
     color: #475569;
 }
 
-.admin-login {
-    background: linear-gradient(
-        135deg,
-        #7c3aed,
-        #4f46e5
-    );
-
+.admin-login,
+.admin-save {
+    background: linear-gradient(135deg,#7c3aed,#4f46e5);
     color: white;
+}
+
+.admin-delete {
+    background: #fee2e2;
+    color: #dc2626;
 }
 
 .admin-error {
     display: none;
-
     margin-top: 10px;
-
     color: #dc2626;
-
     font-size: 13px;
 }
 
@@ -670,16 +539,115 @@ footer {
     display: block;
 }
 
+/* ADMIN */
+
+#admin-panel {
+    display: none;
+}
+
+#admin-panel.open {
+    display: block;
+}
+
+.admin-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.admin-top h2 {
+    margin: 0;
+}
+
+.admin-logout {
+    padding: 10px 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #f1f5f9;
+    color: #475569;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.admin-form {
+    padding: 20px;
+    margin-bottom: 25px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+
+    background: #f8fafc;
+}
+
+.admin-form h3 {
+    margin-top: 0;
+}
+
+.admin-word-list {
+    display: grid;
+    gap: 12px;
+}
+
+.admin-word {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 15px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+
+    background: white;
+}
+
+.admin-word-info strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.admin-word-info span {
+    color: #64748b;
+    font-family: Georgia,serif;
+}
+
+.admin-word-buttons {
+    display: flex;
+    gap: 7px;
+}
+
+.small-button {
+    padding: 9px 11px;
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.edit-button {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.delete-button {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
 /* MOBILE */
 
-@media (max-width: 700px) {
+@media (max-width:700px) {
 
     header {
         padding: 45px 18px 65px;
-    }
-
-    h1 {
-        letter-spacing: -1px;
     }
 
     .container {
@@ -700,15 +668,6 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .word-card {
-        padding: 16px;
-    }
-
-    .audio-button {
-        width: 50px;
-        height: 50px;
-    }
-
     .menu {
         top: 70px;
         right: 12px;
@@ -718,21 +677,18 @@ footer {
         top: 15px;
         right: 15px;
     }
-}
 
-@media (max-width: 380px) {
-
-    .word {
-        font-size: 19px;
+    .admin-word {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
-    .ipa {
-        font-size: 15px;
+    .admin-word-buttons {
+        width: 100%;
     }
 
-    .audio-button {
-        width: 47px;
-        height: 47px;
+    .small-button {
+        flex: 1;
     }
 }
 </style>
@@ -742,255 +698,307 @@ footer {
 
 <header>
 
-    <button
-        class="menu-button"
-        id="menu-button"
-        type="button"
-        aria-label="Ouvrir le menu"
-        aria-expanded="false"
-    >
-        ☰
-    </button>
+<button
+    class="menu-button"
+    id="menu-button"
+    type="button"
+    aria-label="Ouvrir le menu"
+>
+    ☰
+</button>
 
-    <div class="header-content">
+<div class="header-content">
 
-        <div class="badge">
-            🇬🇧 APPRENTISSAGE DE L'ANGLAIS
-        </div>
+<div class="badge">
+🇬🇧 APPRENTISSAGE DE L'ANGLAIS
+</div>
 
-        <h1>
-            Prononciation anglaise
-        </h1>
+<h1>
+Prononciation anglaise
+</h1>
 
-        <div class="subtitle">
-            Entraîne-toi à prononcer correctement
-            les mots anglais.
-        </div>
+<div class="subtitle">
+Entraîne-toi à prononcer correctement
+les mots anglais.
+</div>
 
-    </div>
+</div>
 </header>
 
 
 <!-- MENU -->
 
-<div
-    class="menu"
-    id="menu"
+<div class="menu" id="menu">
+
+<div class="menu-title">
+MENU
+</div>
+
+<button
+    class="menu-item"
+    id="admin-button"
+    type="button"
 >
-
-    <div class="menu-title">
-        MENU
-    </div>
-
-    <button
-        class="menu-item"
-        id="admin-button"
-        type="button"
-    >
-        ⚙️ Administrateur
-    </button>
+⚙️ Administrateur
+</button>
 
 </div>
 
 
+<!-- SITE -->
+
 <div class="container">
 
-    <main class="panel">
+<main class="panel" id="main-panel">
 
-        <div class="stats">
+<div class="stats">
 
-            <div class="stat">
+<div class="stat">
 
-                <div class="stat-icon">
-                    📚
-                </div>
+<div class="stat-icon">📚</div>
 
-                <div>
-                    <div class="stat-label">
-                        Vocabulaire
-                    </div>
+<div>
+<div class="stat-label">Vocabulaire</div>
 
-                    <div class="stat-value">
-                        <span id="total-count">0</span>
-                        mots disponibles
-                    </div>
-                </div>
+<div class="stat-value">
+<span id="total-count">0</span>
+mots disponibles
+</div>
 
-            </div>
+</div>
+</div>
 
 
-            <div class="stat">
+<div class="stat">
 
-                <div class="stat-icon">
-                    🇬🇧
-                </div>
+<div class="stat-icon">🇬🇧</div>
 
-                <div>
-                    <div class="stat-label">
-                        Prononciation
-                    </div>
+<div>
+<div class="stat-label">Prononciation</div>
 
-                    <div class="stat-value">
-                        Anglais britannique
-                    </div>
-                </div>
+<div class="stat-value">
+Anglais britannique
+</div>
 
-            </div>
+</div>
+</div>
 
-        </div>
+</div>
 
 
-        <div class="notice">
+<div class="notice">
 
-            <div class="notice-icon">
-                💻
-            </div>
+<div class="notice-icon">💻</div>
 
-            <div>
-                <strong>
-                    Sur PC, Edge est recommandé pour l’audio.
-                </strong>
-            </div>
+<div>
+<strong>
+Sur PC, Edge est recommandé pour l’audio.
+</strong>
+</div>
 
-        </div>
+</div>
 
 
-        <div class="search-container">
+<div class="search-container">
 
-            <span class="search-icon">
-                🔎
-            </span>
+<span class="search-icon">🔎</span>
 
-            <input
-                id="search"
-                type="text"
-                placeholder="Rechercher un mot..."
-                autocomplete="off"
-                aria-label="Rechercher un mot"
-            >
+<input
+    id="search"
+    type="text"
+    placeholder="Rechercher un mot..."
+    autocomplete="off"
+>
 
-        </div>
+</div>
 
 
-        <div class="section-header">
+<div class="section-header">
 
-            <h2 class="section-title">
-                📖 Vocabulaire
-            </h2>
+<h2 class="section-title">
+📖 Vocabulaire
+</h2>
 
-            <div
-                id="visible-count"
-                class="count"
-            >
-                0 mots
-            </div>
+<div id="visible-count" class="count">
+0 mots
+</div>
 
-        </div>
+</div>
 
 
-        <div id="words"></div>
+<div id="words"></div>
 
 
-        <div id="no-results">
+<div id="no-results">
 
-            <div class="no-result-icon">
-                🔎
-            </div>
+<div class="no-result-icon">🔎</div>
 
-            <strong>
-                Aucun mot trouvé
-            </strong>
+<strong>Aucun mot trouvé</strong>
 
-            <div>
-                Essaie une autre recherche.
-            </div>
+<div>
+Essaie une autre recherche.
+</div>
 
-        </div>
+</div>
 
-    </main>
+</main>
+
+
+<!-- ADMIN -->
+
+<main class="panel" id="admin-panel">
+
+<div class="admin-top">
+
+<h2>⚙️ Administration</h2>
+
+<button
+    class="admin-logout"
+    id="admin-logout"
+    type="button"
+>
+Se déconnecter
+</button>
+
+</div>
+
+
+<div class="admin-form">
+
+<h3 id="form-title">
+➕ Ajouter un mot
+</h3>
+
+<input
+    class="admin-input"
+    id="admin-word"
+    type="text"
+    placeholder="Mot anglais"
+    autocomplete="off"
+>
+
+<input
+    class="admin-input"
+    id="admin-ipa"
+    type="text"
+    placeholder="Prononciation IPA — ex : /θrəʊt/"
+    autocomplete="off"
+>
+
+<div class="admin-actions">
+
+<button
+    class="admin-cancel"
+    id="admin-cancel-edit"
+    type="button"
+>
+Annuler
+</button>
+
+<button
+    class="admin-save"
+    id="admin-save"
+    type="button"
+>
+➕ Ajouter
+</button>
+
+</div>
+
+<div
+    class="admin-error"
+    id="admin-form-error"
+></div>
+
+</div>
+
+
+<h3>
+📚 Mots enregistrés
+</h3>
+
+<div
+    class="admin-word-list"
+    id="admin-word-list"
+></div>
+
+</main>
 
 </div>
 
 
 <footer>
 
-    <div>
-        Prononciation anglaise 🇬🇧
-    </div>
+<div>
+Prononciation anglaise 🇬🇧
+</div>
 
-    <div class="creator">
-        Créé par Nathan
-    </div>
+<div class="creator">
+Créé par Nathan
+</div>
 
 </footer>
 
 
-<!-- FENÊTRE ADMINISTRATEUR -->
+<!-- CONNEXION ADMIN -->
 
 <div
     class="admin-overlay"
     id="admin-overlay"
 >
 
-    <div
-        class="admin-box"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="admin-title"
-    >
+<div class="admin-box">
 
-        <div class="admin-icon">
-            🔐
-        </div>
+<div class="admin-icon">
+🔐
+</div>
 
-        <h2
-            class="admin-title"
-            id="admin-title"
-        >
-            Administrateur
-        </h2>
+<h2 class="admin-title">
+Administrateur
+</h2>
 
-        <div class="admin-description">
-            Entre le code administrateur pour accéder
-            à l'espace de gestion.
-        </div>
+<div class="admin-description">
+Entre le code administrateur pour accéder
+à l'espace de gestion.
+</div>
 
-        <input
-            id="admin-code"
-            type="password"
-            inputmode="numeric"
-            placeholder="Code administrateur"
-            autocomplete="off"
-        >
+<input
+    id="admin-code"
+    class="admin-input"
+    type="password"
+    inputmode="numeric"
+    placeholder="Code administrateur"
+    autocomplete="off"
+>
 
-        <div
-            class="admin-error"
-            id="admin-error"
-        >
-            ❌ Code incorrect.
-        </div>
+<div
+    class="admin-error"
+    id="admin-error"
+>
+❌ Code incorrect.
+</div>
 
-        <div class="admin-actions">
+<div class="admin-actions">
 
-            <button
-                class="admin-cancel"
-                id="admin-cancel"
-                type="button"
-            >
-                Annuler
-            </button>
+<button
+    class="admin-cancel"
+    id="admin-cancel"
+    type="button"
+>
+Annuler
+</button>
 
-            <button
-                class="admin-login"
-                id="admin-login"
-                type="button"
-            >
-                Se connecter
-            </button>
+<button
+    class="admin-login"
+    id="admin-login"
+    type="button"
+>
+Se connecter
+</button>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </div>
 
@@ -998,7 +1006,6 @@ footer {
 <!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
 <script>
 
@@ -1009,20 +1016,8 @@ footer {
 const SUPABASE_URL =
     "https://fhpxnkahornwxpjdhjju.supabase.co";
 
-
-/*
-   ⚠️ CHANGE UNIQUEMENT CETTE VALEUR
-
-   Mets ici ta clé :
-   sb_publishable_...
-
-   NE METS JAMAIS :
-   sb_secret_...
-*/
-
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_uXwFKyJoyTXE8pTFGsuaMA_004Nx4oG";
-
 
 const supabaseClient =
     window.supabase.createClient(
@@ -1032,53 +1027,59 @@ const supabaseClient =
 
 
 /* =========================
-   VOCABULAIRE DE SECOURS
+   MOTS DE SECOURS
 ========================= */
 
 const fallbackVocabulary = [
-    {
-        id: 1,
-        word: "throat",
-        ipa: "/θrəʊt/"
-    },
-    {
-        id: 2,
-        word: "ache",
-        ipa: "/eɪk/"
-    },
-    {
-        id: 3,
-        word: "tooth",
-        ipa: "/tuːθ/"
-    },
-    {
-        id: 4,
-        word: "that",
-        ipa: "/ðæt/"
-    },
-    {
-        id: 5,
-        word: "with",
-        ipa: "/wɪð/"
-    },
-    {
-        id: 6,
-        word: "thanks",
-        ipa: "/θæŋks/"
-    },
-    {
-        id: 7,
-        word: "stomach",
-        ipa: "/ˈstʌmək/"
-    }
+
+{
+    id: 1,
+    word: "throat",
+    ipa: "/θrəʊt/"
+},
+
+{
+    id: 2,
+    word: "ache",
+    ipa: "/eɪk/"
+},
+
+{
+    id: 3,
+    word: "tooth",
+    ipa: "/tuːθ/"
+},
+
+{
+    id: 4,
+    word: "that",
+    ipa: "/ðæt/"
+},
+
+{
+    id: 5,
+    word: "with",
+    ipa: "/wɪð/"
+},
+
+{
+    id: 6,
+    word: "thanks",
+    ipa: "/θæŋks/"
+},
+
+{
+    id: 7,
+    word: "stomach",
+    ipa: "/ˈstʌmək/"
+}
+
 ];
 
 
-/* =========================
-   VOCABULAIRE ACTUEL
-========================= */
-
 let vocabulary = [];
+let adminSessionCode = null;
+let editingWordId = null;
 
 
 /* =========================
@@ -1100,11 +1101,6 @@ const visibleCount =
 const noResults =
     document.getElementById("no-results");
 
-
-/* =========================
-   MENU
-========================= */
-
 const menuButton =
     document.getElementById("menu-button");
 
@@ -1113,51 +1109,6 @@ const menu =
 
 const adminButton =
     document.getElementById("admin-button");
-
-
-menuButton.addEventListener(
-    "click",
-    function(event) {
-
-        event.stopPropagation();
-
-        const isOpen =
-            menu.classList.toggle("open");
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            isOpen
-        );
-
-    }
-);
-
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        if (
-            !menu.contains(event.target) &&
-            event.target !== menuButton
-        ) {
-
-            menu.classList.remove("open");
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================
-   ADMIN
-========================= */
 
 const adminOverlay =
     document.getElementById("admin-overlay");
@@ -1174,17 +1125,79 @@ const adminCancel =
 const adminError =
     document.getElementById("admin-error");
 
+const mainPanel =
+    document.getElementById("main-panel");
+
+const adminPanel =
+    document.getElementById("admin-panel");
+
+const adminLogout =
+    document.getElementById("admin-logout");
+
+const adminWord =
+    document.getElementById("admin-word");
+
+const adminIpa =
+    document.getElementById("admin-ipa");
+
+const adminSave =
+    document.getElementById("admin-save");
+
+const adminCancelEdit =
+    document.getElementById("admin-cancel-edit");
+
+const adminFormError =
+    document.getElementById("admin-form-error");
+
+const adminWordList =
+    document.getElementById("admin-word-list");
+
+const formTitle =
+    document.getElementById("form-title");
+
+
+/* =========================
+   MENU
+========================= */
+
+menuButton.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        menu.classList.toggle("open");
+
+    }
+);
+
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            !menu.contains(event.target) &&
+            event.target !== menuButton
+        ) {
+
+            menu.classList.remove("open");
+
+        }
+
+    }
+);
+
+
+/* =========================
+   OUVRIR ADMIN
+========================= */
 
 adminButton.addEventListener(
     "click",
     function() {
 
         menu.classList.remove("open");
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
 
         adminOverlay.classList.add("open");
 
@@ -1203,7 +1216,9 @@ adminButton.addEventListener(
 );
 
 
-/* Fermer la fenêtre */
+/* =========================
+   FERMER CONNEXION
+========================= */
 
 adminCancel.addEventListener(
     "click",
@@ -1214,8 +1229,6 @@ adminCancel.addEventListener(
     }
 );
 
-
-/* Cliquer en dehors */
 
 adminOverlay.addEventListener(
     "click",
@@ -1232,14 +1245,13 @@ adminOverlay.addEventListener(
 
 
 /* =========================
-   VÉRIFICATION DU CODE
+   VÉRIFICATION CODE
 ========================= */
 
 async function checkAdminCode() {
 
     const enteredCode =
         adminCode.value.trim();
-
 
     if (!enteredCode) {
 
@@ -1248,17 +1260,14 @@ async function checkAdminCode() {
 
         adminError.classList.add("show");
 
-        adminCode.focus();
-
         return;
-    }
 
+    }
 
     adminLogin.disabled = true;
 
     adminLogin.textContent =
         "Vérification...";
-
 
     try {
 
@@ -1270,13 +1279,9 @@ async function checkAdminCode() {
                 }
             );
 
-
         if (error) {
 
-            console.error(
-                "Erreur Supabase :",
-                error
-            );
+            console.error(error);
 
             adminError.textContent =
                 "❌ Impossible de vérifier le code.";
@@ -1284,18 +1289,17 @@ async function checkAdminCode() {
             adminError.classList.add("show");
 
             return;
-        }
 
+        }
 
         if (data === true) {
 
-            adminError.classList.remove("show");
+            adminSessionCode =
+                enteredCode;
 
             adminOverlay.classList.remove("open");
 
-            alert(
-                "✅ Connexion réussie !\n\nL'espace administrateur sera ajouté dans la prochaine étape."
-            );
+            openAdminPanel();
 
         } else {
 
@@ -1304,23 +1308,9 @@ async function checkAdminCode() {
 
             adminError.classList.add("show");
 
-            adminCode.focus();
-
             adminCode.select();
 
         }
-
-    } catch (error) {
-
-        console.error(
-            "Erreur :",
-            error
-        );
-
-        adminError.textContent =
-            "❌ Une erreur est survenue.";
-
-        adminError.classList.add("show");
 
     } finally {
 
@@ -1340,22 +1330,16 @@ adminLogin.addEventListener(
 );
 
 
-/* Appuyer sur Entrée */
-
 adminCode.addEventListener(
     "keydown",
     function(event) {
 
         if (event.key === "Enter") {
-
             checkAdminCode();
-
         }
 
         if (event.key === "Escape") {
-
             adminOverlay.classList.remove("open");
-
         }
 
     }
@@ -1363,36 +1347,69 @@ adminCode.addEventListener(
 
 
 /* =========================
-   CHARGER LES MOTS
+   ADMIN PANEL
+========================= */
+
+function openAdminPanel() {
+
+    mainPanel.style.display =
+        "none";
+
+    adminPanel.classList.add("open");
+
+    resetAdminForm();
+
+    displayAdminWords();
+
+}
+
+
+adminLogout.addEventListener(
+    "click",
+    function() {
+
+        adminSessionCode = null;
+
+        adminPanel.classList.remove("open");
+
+        mainPanel.style.display =
+            "block";
+
+        resetAdminForm();
+
+    }
+);
+
+
+/* =========================
+   CHARGER MOTS
 ========================= */
 
 async function loadVocabulary() {
 
-    try {
+    const { data, error } =
+        await supabaseClient
+            .from("words")
+            .select("id, word, pronunciation")
+            .order("id", {
+                ascending: true
+            });
 
-        const { data, error } =
-            await supabaseClient
-                .from("words")
-                .select("id, word, pronunciation")
-                .order("id", {
-                    ascending: true
-                });
+    if (error) {
 
+        console.error(
+            "Erreur chargement :",
+            error
+        );
 
-        if (error) {
+        vocabulary =
+            fallbackVocabulary;
 
-            console.error(
-                "Erreur lors du chargement des mots :",
-                error
-            );
+    } else {
 
-            vocabulary =
-                fallbackVocabulary;
-
-        } else {
-
-            vocabulary =
-                (data || []).map(function(item) {
+        vocabulary =
+            (data || []).map(
+                function(item) {
 
                     return {
                         id: item.id,
@@ -1400,48 +1417,30 @@ async function loadVocabulary() {
                         ipa: item.pronunciation || ""
                     };
 
-                });
+                }
+            );
 
+        if (vocabulary.length === 0) {
 
-            /*
-               Si la table est encore vide,
-               on garde temporairement les 7 mots
-               pour que le site reste utilisable.
-            */
-
-            if (vocabulary.length === 0) {
-
-                vocabulary =
-                    fallbackVocabulary;
-
-            }
+            vocabulary =
+                fallbackVocabulary;
 
         }
 
-    } catch (error) {
-
-        console.error(
-            "Erreur :",
-            error
-        );
-
-        vocabulary =
-            fallbackVocabulary;
-
     }
-
 
     totalCount.textContent =
         vocabulary.length;
 
-
     displayWords(vocabulary);
+
+    displayAdminWords();
 
 }
 
 
 /* =========================
-   AFFICHAGE DES MOTS
+   AFFICHER MOTS
 ========================= */
 
 function displayWords(list) {
@@ -1452,146 +1451,442 @@ function displayWords(list) {
         list.length +
         (list.length === 1 ? " mot" : " mots");
 
-
     if (list.length === 0) {
 
-        noResults.style.display = "block";
+        noResults.style.display =
+            "block";
 
         return;
 
     }
 
+    noResults.style.display =
+        "none";
 
-    noResults.style.display = "none";
+    list.forEach(
+        function(item) {
 
+            const card =
+                document.createElement("div");
 
-    list.forEach(function(item) {
+            card.className =
+                "word-card";
 
-        const card =
-            document.createElement("div");
+            const info =
+                document.createElement("div");
 
-        card.className =
-            "word-card";
+            const word =
+                document.createElement("div");
 
+            word.className =
+                "word";
 
-        const info =
-            document.createElement("div");
+            word.textContent =
+                item.word;
 
-        info.className =
-            "word-info";
+            const ipa =
+                document.createElement("div");
 
+            ipa.className =
+                "ipa";
 
-        const word =
-            document.createElement("div");
+            ipa.textContent =
+                item.ipa;
 
-        word.className =
-            "word";
+            info.appendChild(word);
+            info.appendChild(ipa);
 
-        word.textContent =
-            item.word;
+            const button =
+                document.createElement("button");
 
+            button.className =
+                "audio-button";
 
-        const ipa =
-            document.createElement("div");
+            button.type =
+                "button";
 
-        ipa.className =
-            "ipa";
+            button.textContent =
+                "🔊";
 
-        ipa.textContent =
-            item.ipa;
+            button.addEventListener(
+                "click",
+                function() {
 
+                    pronounceWord(
+                        item.word,
+                        button
+                    );
 
-        info.appendChild(word);
-        info.appendChild(ipa);
+                }
+            );
 
+            card.appendChild(info);
+            card.appendChild(button);
 
-        const button =
-            document.createElement("button");
+            wordsContainer.appendChild(card);
 
-        button.className =
-            "audio-button";
-
-        button.type =
-            "button";
-
-        button.textContent =
-            "🔊";
-
-        button.setAttribute(
-            "aria-label",
-            "Écouter " + item.word
-        );
-
-
-        button.addEventListener(
-            "click",
-            function() {
-
-                pronounceWord(
-                    item.word,
-                    button
-                );
-
-            }
-        );
-
-
-        card.appendChild(info);
-        card.appendChild(button);
-
-        wordsContainer.appendChild(card);
-
-    });
+        }
+    );
 
 }
 
 
 /* =========================
-   VOIX BRITANNIQUE
+   ADMIN : LISTE
 ========================= */
 
-function getBritishVoice() {
+function displayAdminWords() {
 
-    if (!("speechSynthesis" in window)) {
+    adminWordList.innerHTML = "";
 
-        return null;
+    const databaseWords =
+        vocabulary.filter(
+            function(item) {
+                return !fallbackVocabulary.some(
+                    function(fallback) {
+                        return (
+                            fallback.id === item.id &&
+                            fallback.word === item.word
+                        );
+                    }
+                );
+            }
+        );
+
+    if (databaseWords.length === 0) {
+
+        adminWordList.innerHTML =
+            "<div style='color:#64748b;padding:10px 0'>Aucun mot enregistré dans Supabase pour le moment.</div>";
+
+        return;
 
     }
 
+    databaseWords.forEach(
+        function(item) {
 
-    const voices =
-        window.speechSynthesis.getVoices();
+            const row =
+                document.createElement("div");
+
+            row.className =
+                "admin-word";
+
+            const info =
+                document.createElement("div");
+
+            info.className =
+                "admin-word-info";
+
+            info.innerHTML =
+                "<strong>" +
+                escapeHtml(item.word) +
+                "</strong>" +
+                "<span>" +
+                escapeHtml(item.ipa) +
+                "</span>";
+
+            const buttons =
+                document.createElement("div");
+
+            buttons.className =
+                "admin-word-buttons";
+
+            const edit =
+                document.createElement("button");
+
+            edit.className =
+                "small-button edit-button";
+
+            edit.textContent =
+                "✏️ Modifier";
+
+            edit.onclick =
+                function() {
+                    startEdit(item);
+                };
+
+            const remove =
+                document.createElement("button");
+
+            remove.className =
+                "small-button delete-button";
+
+            remove.textContent =
+                "🗑️ Supprimer";
+
+            remove.onclick =
+                function() {
+                    deleteWord(item.id);
+                };
+
+            buttons.appendChild(edit);
+            buttons.appendChild(remove);
+
+            row.appendChild(info);
+            row.appendChild(buttons);
+
+            adminWordList.appendChild(row);
+
+        }
+    );
+
+}
 
 
-    let voice =
-        voices.find(function(item) {
+function escapeHtml(text) {
 
-            return (
-                item.lang &&
-                item.lang.toLowerCase() === "en-gb"
-            );
+    const div =
+        document.createElement("div");
 
-        });
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
 
 
-    if (!voice) {
+/* =========================
+   AJOUT / MODIFICATION
+========================= */
 
-        voice =
-            voices.find(function(item) {
+adminSave.addEventListener(
+    "click",
+    saveWord
+);
 
-                return (
-                    item.lang &&
-                    item.lang
-                        .toLowerCase()
-                        .startsWith("en-gb")
+
+async function saveWord() {
+
+    const word =
+        adminWord.value.trim();
+
+    const ipa =
+        adminIpa.value.trim();
+
+    adminFormError.classList.remove("show");
+
+    if (!word || !ipa) {
+
+        adminFormError.textContent =
+            "❌ Remplis le mot et sa prononciation.";
+
+        adminFormError.classList.add("show");
+
+        return;
+
+    }
+
+    adminSave.disabled = true;
+
+    adminSave.textContent =
+        "Enregistrement...";
+
+    try {
+
+        let result;
+
+        if (editingWordId === null) {
+
+            result =
+                await supabaseClient.rpc(
+                    "admin_add_word",
+                    {
+                        p_code: adminSessionCode,
+                        p_word: word,
+                        p_pronunciation: ipa
+                    }
                 );
 
-            });
+        } else {
+
+            result =
+                await supabaseClient.rpc(
+                    "admin_update_word",
+                    {
+                        p_code: adminSessionCode,
+                        p_id: editingWordId,
+                        p_word: word,
+                        p_pronunciation: ipa
+                    }
+                );
+
+        }
+
+        if (result.error) {
+
+            console.error(result.error);
+
+            adminFormError.textContent =
+                "❌ Erreur lors de l'enregistrement.";
+
+            adminFormError.classList.add("show");
+
+            return;
+
+        }
+
+        if (!result.data || result.data.success !== true) {
+
+            adminFormError.textContent =
+                "❌ " +
+                (result.data?.message || "Opération impossible.");
+
+            adminFormError.classList.add("show");
+
+            return;
+
+        }
+
+        alert(
+            editingWordId === null
+                ? "✅ Mot ajouté !"
+                : "✅ Mot modifié !"
+        );
+
+        resetAdminForm();
+
+        await loadVocabulary();
+
+        displayAdminWords();
+
+    } finally {
+
+        adminSave.disabled = false;
+
+        adminSave.textContent =
+            editingWordId === null
+                ? "➕ Ajouter"
+                : "💾 Enregistrer";
 
     }
 
+}
 
-    return voice || null;
+
+/* =========================
+   MODIFIER
+========================= */
+
+function startEdit(item) {
+
+    editingWordId =
+        item.id;
+
+    adminWord.value =
+        item.word;
+
+    adminIpa.value =
+        item.ipa;
+
+    formTitle.textContent =
+        "✏️ Modifier un mot";
+
+    adminSave.textContent =
+        "💾 Enregistrer";
+
+    adminWord.focus();
+
+}
+
+
+/* =========================
+   ANNULER MODIFICATION
+========================= */
+
+adminCancelEdit.addEventListener(
+    "click",
+    function() {
+
+        resetAdminForm();
+
+    }
+);
+
+
+function resetAdminForm() {
+
+    editingWordId =
+        null;
+
+    adminWord.value =
+        "";
+
+    adminIpa.value =
+        "";
+
+    formTitle.textContent =
+        "➕ Ajouter un mot";
+
+    adminSave.textContent =
+        "➕ Ajouter";
+
+    adminFormError.classList.remove("show");
+
+}
+
+
+/* =========================
+   SUPPRIMER
+========================= */
+
+async function deleteWord(id) {
+
+    const item =
+        vocabulary.find(
+            function(word) {
+                return word.id === id;
+            }
+        );
+
+    if (!item) return;
+
+    const confirmed =
+        confirm(
+            "Supprimer le mot « " +
+            item.word +
+            " » ?"
+        );
+
+    if (!confirmed) return;
+
+    const { data, error } =
+        await supabaseClient.rpc(
+            "admin_delete_word",
+            {
+                p_code: adminSessionCode,
+                p_id: id
+            }
+        );
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "❌ Impossible de supprimer le mot."
+        );
+
+        return;
+
+    }
+
+    if (!data || data.success !== true) {
+
+        alert(
+            "❌ " +
+            (data?.message || "Suppression impossible.")
+        );
+
+        return;
+
+    }
+
+    alert("✅ Mot supprimé !");
+
+    await loadVocabulary();
+
+    displayAdminWords();
 
 }
 
@@ -1599,6 +1894,31 @@ function getBritishVoice() {
 /* =========================
    PRONONCIATION
 ========================= */
+
+function getBritishVoice() {
+
+    if (!("speechSynthesis" in window)) {
+        return null;
+    }
+
+    const voices =
+        speechSynthesis.getVoices();
+
+    return voices.find(
+        function(voice) {
+
+            return (
+                voice.lang &&
+                voice.lang
+                    .toLowerCase()
+                    .startsWith("en-gb")
+            );
+
+        }
+    ) || null;
+
+}
+
 
 function pronounceWord(word, button) {
 
@@ -1612,26 +1932,21 @@ function pronounceWord(word, button) {
 
     }
 
-
     const synth =
         window.speechSynthesis;
 
-
     synth.cancel();
-
 
     document
         .querySelectorAll(".audio-button")
-        .forEach(function(item) {
-
-            item.classList.remove("playing");
-
-        });
-
+        .forEach(
+            function(item) {
+                item.classList.remove("playing");
+            }
+        );
 
     const speech =
         new SpeechSynthesisUtterance(word);
-
 
     speech.lang =
         "en-GB";
@@ -1642,41 +1957,25 @@ function pronounceWord(word, button) {
     speech.pitch =
         1;
 
-
     const britishVoice =
         getBritishVoice();
 
-
     if (britishVoice) {
-
         speech.voice =
             britishVoice;
-
     }
-
 
     button.classList.add("playing");
 
-
     speech.onend =
         function() {
-
-            button.classList.remove(
-                "playing"
-            );
-
+            button.classList.remove("playing");
         };
-
 
     speech.onerror =
         function() {
-
-            button.classList.remove(
-                "playing"
-            );
-
+            button.classList.remove("playing");
         };
-
 
     synth.speak(speech);
 
@@ -1696,7 +1995,6 @@ searchInput.addEventListener(
                 .trim()
                 .toLowerCase();
 
-
         const filtered =
             vocabulary.filter(
                 function(item) {
@@ -1708,29 +2006,10 @@ searchInput.addEventListener(
                 }
             );
 
-
         displayWords(filtered);
 
     }
 );
-
-
-/* =========================
-   VOIX DISPONIBLES
-========================= */
-
-if ("speechSynthesis" in window) {
-
-    window.speechSynthesis.addEventListener(
-        "voiceschanged",
-        function() {
-
-            getBritishVoice();
-
-        }
-    );
-
-}
 
 
 /* =========================
