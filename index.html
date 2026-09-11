@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -49,6 +48,113 @@ header {
     max-width: 850px;
     margin: auto;
 }
+
+/* MENU */
+
+.menu-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.1);
+    backdrop-filter: blur(10px);
+
+    color: white;
+    font-size: 24px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.menu-button:hover {
+    background: rgba(255,255,255,.18);
+    transform: scale(1.05);
+}
+
+/* MENU DÉROULANT */
+
+.menu {
+    position: fixed;
+    top: 78px;
+    right: 20px;
+    z-index: 100;
+
+    width: 230px;
+
+    padding: 10px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.97);
+
+    box-shadow: 0 20px 50px rgba(15,23,42,.2);
+
+    display: none;
+}
+
+.menu.open {
+    display: block;
+    animation: menuAppear .18s ease;
+}
+
+@keyframes menuAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-title {
+    padding: 10px 12px 8px;
+
+    color: #64748b;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.menu-item {
+    width: 100%;
+
+    padding: 13px 12px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: transparent;
+
+    color: #172033;
+
+    text-align: left;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .15s;
+}
+
+.menu-item:hover {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+/* BADGE */
 
 .badge {
     display: inline-block;
@@ -412,6 +518,158 @@ footer {
     font-weight: bold;
 }
 
+/* FENÊTRE ADMIN */
+
+.admin-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15,23,42,.55);
+    backdrop-filter: blur(5px);
+}
+
+.admin-overlay.open {
+    display: flex;
+}
+
+.admin-box {
+    width: min(400px, 100%);
+
+    padding: 28px;
+
+    border-radius: 24px;
+
+    background: white;
+
+    box-shadow: 0 30px 80px rgba(15,23,42,.3);
+
+    animation: adminAppear .2s ease;
+}
+
+@keyframes adminAppear {
+    from {
+        opacity: 0;
+        transform: scale(.96) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.admin-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+
+    margin-bottom: 15px;
+
+    border-radius: 16px;
+
+    background: #eef2ff;
+
+    font-size: 25px;
+}
+
+.admin-title {
+    margin: 0 0 8px;
+
+    font-size: 24px;
+}
+
+.admin-description {
+    margin-bottom: 20px;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#admin-code {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 2px solid #e5e7eb;
+    border-radius: 14px;
+
+    outline: none;
+
+    font-size: 16px;
+
+    transition: .2s;
+}
+
+#admin-code:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px rgba(99,102,241,.1);
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.admin-cancel,
+.admin-login {
+    flex: 1;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 13px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.admin-cancel {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.admin-login {
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #4f46e5
+    );
+
+    color: white;
+}
+
+.admin-error {
+    display: none;
+
+    margin-top: 10px;
+
+    color: #dc2626;
+
+    font-size: 13px;
+}
+
+.admin-error.show {
+    display: block;
+}
+
 /* MOBILE */
 
 @media (max-width: 700px) {
@@ -450,6 +708,16 @@ footer {
         width: 50px;
         height: 50px;
     }
+
+    .menu {
+        top: 70px;
+        right: 12px;
+    }
+
+    .menu-button {
+        top: 15px;
+        right: 15px;
+    }
 }
 
 @media (max-width: 380px) {
@@ -473,6 +741,18 @@ footer {
 <body>
 
 <header>
+
+    <!-- BOUTON MENU -->
+    <button
+        class="menu-button"
+        id="menu-button"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
     <div class="header-content">
 
         <div class="badge">
@@ -490,6 +770,28 @@ footer {
 
     </div>
 </header>
+
+
+<!-- MENU -->
+
+<div
+    class="menu"
+    id="menu"
+>
+
+    <div class="menu-title">
+        MENU
+    </div>
+
+    <button
+        class="menu-item"
+        id="admin-button"
+        type="button"
+    >
+        ⚙️ Administrateur
+    </button>
+
+</div>
 
 
 <div class="container">
@@ -546,7 +848,9 @@ footer {
             </div>
 
             <div>
-                <strong>Sur PC, Edge est recommandé pour l’audio.</strong>
+                <strong>
+                    Sur PC, Edge est recommandé pour l’audio.
+                </strong>
             </div>
 
         </div>
@@ -622,7 +926,81 @@ footer {
 </footer>
 
 
+<!-- FENÊTRE ADMINISTRATEUR -->
+
+<div
+    class="admin-overlay"
+    id="admin-overlay"
+>
+
+    <div
+        class="admin-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="admin-title"
+    >
+
+        <div class="admin-icon">
+            🔐
+        </div>
+
+        <h2
+            class="admin-title"
+            id="admin-title"
+        >
+            Administrateur
+        </h2>
+
+        <div class="admin-description">
+            Entre le code administrateur pour accéder
+            à l'espace de gestion.
+        </div>
+
+        <input
+            id="admin-code"
+            type="password"
+            inputmode="numeric"
+            placeholder="Code administrateur"
+            autocomplete="off"
+        >
+
+        <div
+            class="admin-error"
+            id="admin-error"
+        >
+            ❌ Code incorrect.
+        </div>
+
+        <div class="admin-actions">
+
+            <button
+                class="admin-cancel"
+                id="admin-cancel"
+                type="button"
+            >
+                Annuler
+            </button>
+
+            <button
+                class="admin-login"
+                id="admin-login"
+                type="button"
+            >
+                Se connecter
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <script>
+
+/* =========================
+   VOCABULAIRE
+========================= */
 
 const vocabulary = [
     {
@@ -656,6 +1034,10 @@ const vocabulary = [
 ];
 
 
+/* =========================
+   ÉLÉMENTS
+========================= */
+
 const wordsContainer =
     document.getElementById("words");
 
@@ -672,9 +1054,216 @@ const noResults =
     document.getElementById("no-results");
 
 
+/* =========================
+   MENU
+========================= */
+
+const menuButton =
+    document.getElementById("menu-button");
+
+const menu =
+    document.getElementById("menu");
+
+const adminButton =
+    document.getElementById("admin-button");
+
+
+menuButton.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        const isOpen =
+            menu.classList.toggle("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+    }
+);
+
+
+/* Fermer le menu en cliquant ailleurs */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            !menu.contains(event.target) &&
+            event.target !== menuButton
+        ) {
+
+            menu.classList.remove("open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   ADMIN
+========================= */
+
+const adminOverlay =
+    document.getElementById("admin-overlay");
+
+const adminCode =
+    document.getElementById("admin-code");
+
+const adminLogin =
+    document.getElementById("admin-login");
+
+const adminCancel =
+    document.getElementById("admin-cancel");
+
+const adminError =
+    document.getElementById("admin-error");
+
+
+adminButton.addEventListener(
+    "click",
+    function() {
+
+        menu.classList.remove("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        adminOverlay.classList.add("open");
+
+        adminCode.value = "";
+
+        adminError.classList.remove("show");
+
+        setTimeout(
+            function() {
+                adminCode.focus();
+            },
+            100
+        );
+
+    }
+);
+
+
+/* Fermer la fenêtre */
+
+adminCancel.addEventListener(
+    "click",
+    function() {
+
+        adminOverlay.classList.remove("open");
+
+    }
+);
+
+
+/* Cliquer en dehors */
+
+adminOverlay.addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === adminOverlay) {
+
+            adminOverlay.classList.remove("open");
+
+        }
+
+    }
+);
+
+
+/* Vérification du code de TEST */
+
+function checkAdminCode() {
+
+    const enteredCode =
+        adminCode.value.trim();
+
+    /*
+       CODE TEMPORAIRE DE TEST
+
+       IMPORTANT :
+       Ce code ne sera PAS utilisé
+       pour la vraie sécurité.
+    */
+
+    const testCode = "1234";
+
+
+    if (enteredCode === testCode) {
+
+        adminError.classList.remove("show");
+
+        adminOverlay.classList.remove("open");
+
+        alert(
+            "✅ Connexion réussie !\n\nL'espace administrateur sera ajouté dans la prochaine étape."
+        );
+
+    } else {
+
+        adminError.classList.add("show");
+
+        adminCode.focus();
+
+    }
+
+}
+
+
+adminLogin.addEventListener(
+    "click",
+    checkAdminCode
+);
+
+
+/* Appuyer sur Entrée */
+
+adminCode.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            checkAdminCode();
+
+        }
+
+        if (event.key === "Escape") {
+
+            adminOverlay.classList.remove("open");
+
+        }
+
+    }
+);
+
+
+/* =========================
+   COMPTEUR
+========================= */
+
 totalCount.textContent =
     vocabulary.length;
 
+
+/* =========================
+   AFFICHAGE DES MOTS
+========================= */
 
 function displayWords(list) {
 
@@ -691,6 +1280,7 @@ function displayWords(list) {
 
         return;
     }
+
 
     noResults.style.display = "none";
 
@@ -714,7 +1304,8 @@ function displayWords(list) {
 
         word.className = "word";
 
-        word.textContent = item.word;
+        word.textContent =
+            item.word;
 
 
         const ipa =
@@ -722,7 +1313,8 @@ function displayWords(list) {
 
         ipa.className = "ipa";
 
-        ipa.textContent = item.ipa;
+        ipa.textContent =
+            item.ipa;
 
 
         info.appendChild(word);
@@ -732,11 +1324,13 @@ function displayWords(list) {
         const button =
             document.createElement("button");
 
-        button.className = "audio-button";
+        button.className =
+            "audio-button";
 
         button.type = "button";
 
-        button.textContent = "🔊";
+        button.textContent =
+            "🔊";
 
         button.setAttribute(
             "aria-label",
@@ -747,10 +1341,12 @@ function displayWords(list) {
         button.addEventListener(
             "click",
             function() {
+
                 pronounceWord(
                     item.word,
                     button
                 );
+
             }
         );
 
@@ -764,11 +1360,18 @@ function displayWords(list) {
 }
 
 
+/* =========================
+   VOIX BRITANNIQUE
+========================= */
+
 function getBritishVoice() {
 
     if (!("speechSynthesis" in window)) {
+
         return null;
+
     }
+
 
     const voices =
         window.speechSynthesis.getVoices();
@@ -803,8 +1406,13 @@ function getBritishVoice() {
 
 
     return voice || null;
+
 }
 
+
+/* =========================
+   PRONONCIATION
+========================= */
 
 function pronounceWord(word, button) {
 
@@ -815,6 +1423,7 @@ function pronounceWord(word, button) {
         );
 
         return;
+
     }
 
 
@@ -838,9 +1447,14 @@ function pronounceWord(word, button) {
         new SpeechSynthesisUtterance(word);
 
 
-    speech.lang = "en-GB";
-    speech.rate = 0.78;
-    speech.pitch = 1;
+    speech.lang =
+        "en-GB";
+
+    speech.rate =
+        0.78;
+
+    speech.pitch =
+        1;
 
 
     const britishVoice =
@@ -848,30 +1462,44 @@ function pronounceWord(word, button) {
 
 
     if (britishVoice) {
-        speech.voice = britishVoice;
+
+        speech.voice =
+            britishVoice;
+
     }
 
 
     button.classList.add("playing");
 
 
-    speech.onend = function() {
+    speech.onend =
+        function() {
 
-        button.classList.remove("playing");
+            button.classList.remove(
+                "playing"
+            );
 
-    };
+        };
 
 
-    speech.onerror = function() {
+    speech.onerror =
+        function() {
 
-        button.classList.remove("playing");
+            button.classList.remove(
+                "playing"
+            );
 
-    };
+        };
 
 
     synth.speak(speech);
+
 }
 
+
+/* =========================
+   RECHERCHE
+========================= */
 
 searchInput.addEventListener(
     "input",
@@ -884,13 +1512,15 @@ searchInput.addEventListener(
 
 
         const filtered =
-            vocabulary.filter(function(item) {
+            vocabulary.filter(
+                function(item) {
 
-                return item.word
-                    .toLowerCase()
-                    .includes(search);
+                    return item.word
+                        .toLowerCase()
+                        .includes(search);
 
-            });
+                }
+            );
 
 
         displayWords(filtered);
@@ -899,17 +1529,27 @@ searchInput.addEventListener(
 );
 
 
+/* =========================
+   VOIX DISPONIBLES
+========================= */
+
 if ("speechSynthesis" in window) {
 
     window.speechSynthesis.addEventListener(
         "voiceschanged",
         function() {
+
             getBritishVoice();
+
         }
     );
 
 }
 
+
+/* =========================
+   DÉMARRAGE
+========================= */
 
 displayWords(vocabulary);
 
@@ -917,4 +1557,3 @@ displayWords(vocabulary);
 
 </body>
 </html>
-```
