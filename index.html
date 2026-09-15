@@ -281,6 +281,145 @@ h1 {
     box-shadow: 0 0 0 4px rgba(99,102,241,.1);
 }
 
+/* MODE */
+
+.mode-switch {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 5px;
+    width: fit-content;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    background: #f8fafc;
+}
+
+.mode-button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 11px;
+    background: transparent;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.mode-button:hover {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.mode-button.active {
+    background: white;
+    color: #4f46e5;
+    box-shadow: 0 3px 10px rgba(15,23,42,.08);
+}
+
+.verb-card {
+    padding: 19px;
+    border-radius: 20px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    transition: .2s ease;
+}
+
+.verb-card:hover {
+    transform: translateY(-3px);
+    border-color: #c7d2fe;
+    box-shadow: 0 13px 30px rgba(15,23,42,.1);
+}
+
+.verb-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.verb-infinitive {
+    color: #111827;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.verb-translation {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.verb-forms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.verb-form {
+    padding: 11px 12px;
+    border-radius: 13px;
+    background: #f8fafc;
+}
+
+.verb-label {
+    margin-bottom: 4px;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.verb-value-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.verb-value {
+    color: #172033;
+    font-weight: bold;
+}
+
+.verb-form-audio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(135deg,#7c3aed,#4f46e5);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(79,70,229,.2);
+}
+
+.verb-form-audio:hover {
+    transform: scale(1.06);
+}
+
+.verb-form-audio.playing {
+    animation: pulse 1s infinite;
+}
+
+@media (max-width:700px) {
+    .mode-switch {
+        width: 100%;
+    }
+
+    .mode-button {
+        flex: 1;
+    }
+
+    .verb-forms {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* SECTION */
 
 .section-header {
@@ -588,6 +727,42 @@ footer {
     margin-top: 0;
 }
 
+.admin-mode-switch {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 4px;
+    border: 1px solid #e5e7eb;
+    border-radius: 13px;
+    background: white;
+}
+
+.admin-mode-button {
+    flex: 1;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #64748b;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.admin-mode-button.active {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.admin-verb-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.admin-verb-fields .full {
+    grid-column: 1 / -1;
+}
+
 .admin-word-list {
     display: grid;
     gap: 12px;
@@ -685,6 +860,14 @@ footer {
 
     .admin-word-buttons {
         width: 100%;
+    }
+
+    .admin-verb-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-verb-fields .full {
+        grid-column: auto;
     }
 
     .small-button {
@@ -813,9 +996,29 @@ Sur Ordinateur, Edge est recommandé pour la prononciation des mots.
 </div>
 
 
+<div class="mode-switch" role="tablist" aria-label="Type de contenu">
+
+<button
+    class="mode-button active"
+    id="mode-words"
+    type="button"
+>
+📖 Mots
+</button>
+
+<button
+    class="mode-button"
+    id="mode-verbs"
+    type="button"
+>
+🔄 Verbes irréguliers
+</button>
+
+</div>
+
 <div class="section-header">
 
-<h2 class="section-title">
+<h2 class="section-title" id="section-title">
 📖 Vocabulaire
 </h2>
 
@@ -865,9 +1068,31 @@ Se déconnecter
 
 <div class="admin-form">
 
+<div class="admin-mode-switch">
+
+<button
+    class="admin-mode-button active"
+    id="admin-mode-word"
+    type="button"
+>
+📖 Mot
+</button>
+
+<button
+    class="admin-mode-button"
+    id="admin-mode-verb"
+    type="button"
+>
+🔄 Verbe irrégulier
+</button>
+
+</div>
+
 <h3 id="form-title">
 ➕ Ajouter un mot
 </h3>
+
+<div id="admin-word-fields">
 
 <input
     class="admin-input"
@@ -884,6 +1109,45 @@ Se déconnecter
     placeholder="Prononciation IPA — ex : /θrəʊt/"
     autocomplete="off"
 >
+
+</div>
+
+<div id="admin-verb-fields" class="admin-verb-fields" style="display:none">
+
+<input
+    class="admin-input"
+    id="admin-infinitive"
+    type="text"
+    placeholder="Infinitif — ex : go"
+    autocomplete="off"
+>
+
+<input
+    class="admin-input"
+    id="admin-translation"
+    type="text"
+    placeholder="Traduction — ex : aller"
+    autocomplete="off"
+>
+
+<input
+    class="admin-input"
+    id="admin-preterite"
+    type="text"
+    placeholder="Prétérit — ex : went"
+    autocomplete="off"
+>
+
+<input
+    class="admin-input"
+    id="admin-past-participle"
+    class="admin-input full"
+    type="text"
+    placeholder="Participe passé — ex : gone"
+    autocomplete="off"
+>
+
+</div>
 
 <div class="admin-actions">
 
@@ -912,8 +1176,7 @@ Annuler
 
 </div>
 
-
-<h3>
+<h3 id="admin-list-title">
 📚 Mots enregistrés
 </h3>
 
@@ -1078,8 +1341,12 @@ const fallbackVocabulary = [
 
 
 let vocabulary = [];
+let irregularVerbs = [];
+let currentMode = "words";
 let adminSessionCode = null;
 let editingWordId = null;
+let editingVerbId = null;
+let adminMode = "words";
 
 
 /* =========================
@@ -1097,6 +1364,9 @@ const totalCount =
 
 const visibleCount =
     document.getElementById("visible-count");
+
+const sectionTitle =
+    document.getElementById("section-title");
 
 const noResults =
     document.getElementById("no-results");
@@ -1154,6 +1424,39 @@ const adminWordList =
 
 const formTitle =
     document.getElementById("form-title");
+
+const adminListTitle =
+    document.getElementById("admin-list-title");
+
+const adminModeWord =
+    document.getElementById("admin-mode-word");
+
+const adminModeVerb =
+    document.getElementById("admin-mode-verb");
+
+const adminWordFields =
+    document.getElementById("admin-word-fields");
+
+const adminVerbFields =
+    document.getElementById("admin-verb-fields");
+
+const adminInfinitive =
+    document.getElementById("admin-infinitive");
+
+const adminPreterite =
+    document.getElementById("admin-preterite");
+
+const adminPastParticiple =
+    document.getElementById("admin-past-participle");
+
+const adminTranslation =
+    document.getElementById("admin-translation");
+
+const modeWords =
+    document.getElementById("mode-words");
+
+const modeVerbs =
+    document.getElementById("mode-verbs");
 
 
 /* =========================
@@ -1357,6 +1660,7 @@ function openAdminPanel() {
 
     adminPanel.classList.add("open");
 
+    setAdminMode("words");
     resetAdminForm();
 
     displayAdminWords();
@@ -1382,12 +1686,53 @@ adminLogout.addEventListener(
 
 
 /* =========================
+   MODE ADMIN
+========================= */
+
+function setAdminMode(mode) {
+
+    adminMode = mode;
+
+    adminModeWord.classList.toggle("active", mode === "words");
+    adminModeVerb.classList.toggle("active", mode === "verbs");
+
+    adminWordFields.style.display =
+        mode === "words" ? "block" : "none";
+
+    adminVerbFields.style.display =
+        mode === "verbs" ? "grid" : "none";
+
+    adminListTitle.textContent =
+        mode === "verbs"
+            ? "🔄 Verbes irréguliers enregistrés"
+            : "📚 Mots enregistrés";
+
+    resetAdminForm();
+
+    if (mode === "verbs") {
+        displayAdminVerbs();
+    } else {
+        displayAdminWords();
+    }
+
+}
+
+adminModeWord.addEventListener("click", function() {
+    setAdminMode("words");
+});
+
+adminModeVerb.addEventListener("click", function() {
+    setAdminMode("verbs");
+});
+
+
+/* =========================
    CHARGER MOTS
 ========================= */
 
 async function loadVocabulary() {
 
-    const { data, error } =
+    const wordsResult =
         await supabaseClient
             .from("words")
             .select("id, word, pronunciation")
@@ -1395,20 +1740,19 @@ async function loadVocabulary() {
                 ascending: true
             });
 
-    if (error) {
+    if (wordsResult.error) {
 
         console.error(
-            "Erreur chargement :",
-            error
+            "Erreur chargement des mots :",
+            wordsResult.error
         );
 
-        vocabulary =
-            fallbackVocabulary;
+        vocabulary = fallbackVocabulary;
 
     } else {
 
         vocabulary =
-            (data || []).map(
+            (wordsResult.data || []).map(
                 function(item) {
 
                     return {
@@ -1421,23 +1765,103 @@ async function loadVocabulary() {
             );
 
         if (vocabulary.length === 0) {
-
-            vocabulary =
-                fallbackVocabulary;
-
+            vocabulary = fallbackVocabulary;
         }
 
     }
 
-    totalCount.textContent =
-        vocabulary.length;
+    const verbsResult =
+        await supabaseClient
+            .from("irregular_verbs")
+            .select("id, infinitive, preterite, past_participle, translation")
+            .order("id", {
+                ascending: true
+            });
 
-    displayWords(vocabulary);
+    if (verbsResult.error) {
 
+        console.error(
+            "Erreur chargement des verbes irréguliers :",
+            verbsResult.error
+        );
+
+        irregularVerbs = [];
+
+    } else {
+
+        irregularVerbs = verbsResult.data || [];
+
+    }
+
+    updateStats();
+    applySearch();
     displayAdminWords();
 
 }
 
+
+function updateStats() {
+
+    sectionTitle.textContent =
+        currentMode === "verbs"
+            ? "🔄 Verbes irréguliers"
+            : "📖 Vocabulaire";
+
+    searchInput.placeholder =
+        currentMode === "verbs"
+            ? "Rechercher un verbe..."
+            : "Rechercher un mot...";
+
+    if (currentMode === "verbs") {
+
+        totalCount.textContent =
+            irregularVerbs.length;
+
+    } else {
+
+        totalCount.textContent =
+            vocabulary.length;
+
+    }
+
+}
+
+
+function changeMode(mode) {
+
+    currentMode = mode;
+
+    modeWords.classList.toggle(
+        "active",
+        mode === "words"
+    );
+
+    modeVerbs.classList.toggle(
+        "active",
+        mode === "verbs"
+    );
+
+    searchInput.value = "";
+    updateStats();
+    applySearch();
+
+}
+
+
+modeWords.addEventListener(
+    "click",
+    function() {
+        changeMode("words");
+    }
+);
+
+
+modeVerbs.addEventListener(
+    "click",
+    function() {
+        changeMode("verbs");
+    }
+);
 
 /* =========================
    AFFICHER MOTS
@@ -1449,19 +1873,16 @@ function displayWords(list) {
 
     visibleCount.textContent =
         list.length +
-        (list.length === 1 ? " mot" : " mots");
+        (list.length === 1 ? " élément" : " éléments");
 
     if (list.length === 0) {
 
-        noResults.style.display =
-            "block";
-
+        noResults.style.display = "block";
         return;
 
     }
 
-    noResults.style.display =
-        "none";
+    noResults.style.display = "none";
 
     list.forEach(
         function(item) {
@@ -1469,8 +1890,7 @@ function displayWords(list) {
             const card =
                 document.createElement("div");
 
-            card.className =
-                "word-card";
+            card.className = "word-card";
 
             const info =
                 document.createElement("div");
@@ -1478,20 +1898,14 @@ function displayWords(list) {
             const word =
                 document.createElement("div");
 
-            word.className =
-                "word";
-
-            word.textContent =
-                item.word;
+            word.className = "word";
+            word.textContent = item.word;
 
             const ipa =
                 document.createElement("div");
 
-            ipa.className =
-                "ipa";
-
-            ipa.textContent =
-                item.ipa;
+            ipa.className = "ipa";
+            ipa.textContent = item.ipa;
 
             info.appendChild(word);
             info.appendChild(ipa);
@@ -1499,30 +1913,19 @@ function displayWords(list) {
             const button =
                 document.createElement("button");
 
-            button.className =
-                "audio-button";
-
-            button.type =
-                "button";
-
-            button.textContent =
-                "🔊";
+            button.className = "audio-button";
+            button.type = "button";
+            button.textContent = "🔊";
 
             button.addEventListener(
                 "click",
                 function() {
-
-                    pronounceWord(
-                        item.word,
-                        button
-                    );
-
+                    pronounceWord(item.word, button);
                 }
             );
 
             card.appendChild(info);
             card.appendChild(button);
-
             wordsContainer.appendChild(card);
 
         }
@@ -1530,6 +1933,140 @@ function displayWords(list) {
 
 }
 
+
+function displayIrregularVerbs(list) {
+
+    wordsContainer.innerHTML = "";
+
+    visibleCount.textContent =
+        list.length +
+        (list.length === 1 ? " verbe" : " verbes");
+
+    if (list.length === 0) {
+
+        noResults.style.display = "block";
+        return;
+
+    }
+
+    noResults.style.display = "none";
+
+    list.forEach(
+        function(item) {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "verb-card";
+
+            const header =
+                document.createElement("div");
+
+            header.className = "verb-header";
+
+            const title =
+                document.createElement("div");
+
+            title.innerHTML =
+                "<div class=\"verb-infinitive\">" +
+                escapeHtml(item.infinitive) +
+                "</div>" +
+                "<div class=\"verb-translation\">" +
+                escapeHtml(item.translation || "") +
+                "</div>";
+
+            header.appendChild(title);
+
+            const forms =
+                document.createElement("div");
+
+            forms.className = "verb-forms";
+
+            forms.innerHTML =
+                "<div class=\"verb-form\"><div class=\"verb-label\">Infinitif</div><div class=\"verb-value-row\"><div class=\"verb-value\">" +
+                escapeHtml(item.infinitive) +
+                "</div><button class=\"verb-form-audio\" type=\"button\" aria-label=\"Écouter l'infinitif\">🔊</button></div></div>" +
+                "<div class=\"verb-form\"><div class=\"verb-label\">Prétérit</div><div class=\"verb-value-row\"><div class=\"verb-value\">" +
+                escapeHtml(item.preterite) +
+                "</div><button class=\"verb-form-audio\" type=\"button\" aria-label=\"Écouter le prétérit\">🔊</button></div></div>" +
+                "<div class=\"verb-form\"><div class=\"verb-label\">Participe passé</div><div class=\"verb-value-row\"><div class=\"verb-value\">" +
+                escapeHtml(item.past_participle) +
+                "</div><button class=\"verb-form-audio\" type=\"button\" aria-label=\"Écouter le participe passé\">🔊</button></div></div>";
+
+            const audioButtons =
+                forms.querySelectorAll(".verb-form-audio");
+
+            audioButtons[0].addEventListener(
+                "click",
+                function() {
+                    pronounceWord(item.infinitive, audioButtons[0]);
+                }
+            );
+
+            audioButtons[1].addEventListener(
+                "click",
+                function() {
+                    pronounceWord(item.preterite, audioButtons[1]);
+                }
+            );
+
+            audioButtons[2].addEventListener(
+                "click",
+                function() {
+                    pronounceWord(item.past_participle, audioButtons[2]);
+                }
+            );
+
+            card.appendChild(header);
+            card.appendChild(forms);
+            wordsContainer.appendChild(card);
+
+        }
+    );
+
+}
+
+
+function applySearch() {
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+    if (currentMode === "verbs") {
+
+        const filtered =
+            irregularVerbs.filter(
+                function(item) {
+
+                    return (
+                        (item.infinitive || "").toLowerCase().includes(search) ||
+                        (item.preterite || "").toLowerCase().includes(search) ||
+                        (item.past_participle || "").toLowerCase().includes(search) ||
+                        (item.translation || "").toLowerCase().includes(search)
+                    );
+
+                }
+            );
+
+        displayIrregularVerbs(filtered);
+        return;
+
+    }
+
+    const filtered =
+        vocabulary.filter(
+            function(item) {
+                return item.word
+                    .toLowerCase()
+                    .includes(search);
+            }
+        );
+
+    displayWords(filtered);
+
+}
 
 /* =========================
    ADMIN : LISTE
@@ -1565,70 +2102,83 @@ function displayAdminWords() {
     databaseWords.forEach(
         function(item) {
 
-            const row =
-                document.createElement("div");
+            const row = document.createElement("div");
+            row.className = "admin-word";
 
-            row.className =
-                "admin-word";
-
-            const info =
-                document.createElement("div");
-
-            info.className =
-                "admin-word-info";
-
+            const info = document.createElement("div");
+            info.className = "admin-word-info";
             info.innerHTML =
-                "<strong>" +
-                escapeHtml(item.word) +
-                "</strong>" +
-                "<span>" +
-                escapeHtml(item.ipa) +
-                "</span>";
+                "<strong>" + escapeHtml(item.word) + "</strong>" +
+                "<span>" + escapeHtml(item.ipa) + "</span>";
 
-            const buttons =
-                document.createElement("div");
+            const buttons = document.createElement("div");
+            buttons.className = "admin-word-buttons";
 
-            buttons.className =
-                "admin-word-buttons";
+            const edit = document.createElement("button");
+            edit.className = "small-button edit-button";
+            edit.textContent = "✏️ Modifier";
+            edit.onclick = function() { startEdit(item); };
 
-            const edit =
-                document.createElement("button");
-
-            edit.className =
-                "small-button edit-button";
-
-            edit.textContent =
-                "✏️ Modifier";
-
-            edit.onclick =
-                function() {
-                    startEdit(item);
-                };
-
-            const remove =
-                document.createElement("button");
-
-            remove.className =
-                "small-button delete-button";
-
-            remove.textContent =
-                "🗑️ Supprimer";
-
-            remove.onclick =
-                function() {
-                    deleteWord(item.id);
-                };
+            const remove = document.createElement("button");
+            remove.className = "small-button delete-button";
+            remove.textContent = "🗑️ Supprimer";
+            remove.onclick = function() { deleteWord(item.id); };
 
             buttons.appendChild(edit);
             buttons.appendChild(remove);
-
             row.appendChild(info);
             row.appendChild(buttons);
-
             adminWordList.appendChild(row);
 
         }
     );
+
+}
+
+
+function displayAdminVerbs() {
+
+    adminWordList.innerHTML = "";
+
+    if (irregularVerbs.length === 0) {
+        adminWordList.innerHTML =
+            "<div style='color:#64748b;padding:10px 0'>Aucun verbe irrégulier enregistré dans Supabase pour le moment.</div>";
+        return;
+    }
+
+    irregularVerbs.forEach(function(item) {
+
+        const row = document.createElement("div");
+        row.className = "admin-word";
+
+        const info = document.createElement("div");
+        info.className = "admin-word-info";
+        info.innerHTML =
+            "<strong>" + escapeHtml(item.infinitive) +
+            " — " + escapeHtml(item.translation || "") + "</strong>" +
+            "<span>" + escapeHtml(item.preterite) +
+            " • " + escapeHtml(item.past_participle) + "</span>";
+
+        const buttons = document.createElement("div");
+        buttons.className = "admin-word-buttons";
+
+        const edit = document.createElement("button");
+        edit.className = "small-button edit-button";
+        edit.textContent = "✏️ Modifier";
+        edit.onclick = function() { startEditVerb(item); };
+
+        const remove = document.createElement("button");
+        remove.className = "small-button delete-button";
+        remove.textContent = "🗑️ Supprimer";
+        remove.onclick = function() { deleteVerb(item.id); };
+
+        buttons.appendChild(edit);
+        buttons.appendChild(remove);
+        row.appendChild(info);
+        row.appendChild(buttons);
+        adminWordList.appendChild(row);
+
+    });
 
 }
 
@@ -1652,113 +2202,125 @@ function escapeHtml(text) {
 
 adminSave.addEventListener(
     "click",
-    saveWord
+    saveAdminItem
 );
+
+
+async function saveAdminItem() {
+
+    adminFormError.classList.remove("show");
+
+    if (adminMode === "verbs") {
+        await saveIrregularVerb();
+        return;
+    }
+
+    await saveWord();
+
+}
 
 
 async function saveWord() {
 
-    const word =
-        adminWord.value.trim();
-
-    const ipa =
-        adminIpa.value.trim();
-
-    adminFormError.classList.remove("show");
+    const word = adminWord.value.trim();
+    const ipa = adminIpa.value.trim();
 
     if (!word || !ipa) {
-
         adminFormError.textContent =
             "❌ Remplis le mot et sa prononciation.";
-
         adminFormError.classList.add("show");
-
         return;
-
     }
 
     adminSave.disabled = true;
-
-    adminSave.textContent =
-        "Enregistrement...";
+    adminSave.textContent = "Enregistrement...";
 
     try {
+        const result = editingWordId === null
+            ? await supabaseClient.rpc("admin_add_word", {
+                p_code: adminSessionCode,
+                p_word: word,
+                p_pronunciation: ipa
+            })
+            : await supabaseClient.rpc("admin_update_word", {
+                p_code: adminSessionCode,
+                p_id: editingWordId,
+                p_word: word,
+                p_pronunciation: ipa
+            });
 
-        let result;
-
-        if (editingWordId === null) {
-
-            result =
-                await supabaseClient.rpc(
-                    "admin_add_word",
-                    {
-                        p_code: adminSessionCode,
-                        p_word: word,
-                        p_pronunciation: ipa
-                    }
-                );
-
-        } else {
-
-            result =
-                await supabaseClient.rpc(
-                    "admin_update_word",
-                    {
-                        p_code: adminSessionCode,
-                        p_id: editingWordId,
-                        p_word: word,
-                        p_pronunciation: ipa
-                    }
-                );
-
-        }
-
-        if (result.error) {
-
+        if (result.error || !result.data || result.data.success !== true) {
             console.error(result.error);
-
             adminFormError.textContent =
-                "❌ Erreur lors de l'enregistrement.";
-
+                "❌ " + (result.data?.message || "Erreur lors de l'enregistrement.");
             adminFormError.classList.add("show");
-
             return;
-
         }
 
-        if (!result.data || result.data.success !== true) {
-
-            adminFormError.textContent =
-                "❌ " +
-                (result.data?.message || "Opération impossible.");
-
-            adminFormError.classList.add("show");
-
-            return;
-
-        }
-
-        alert(
-            editingWordId === null
-                ? "✅ Mot ajouté !"
-                : "✅ Mot modifié !"
-        );
-
+        alert(editingWordId === null ? "✅ Mot ajouté !" : "✅ Mot modifié !");
         resetAdminForm();
-
         await loadVocabulary();
-
         displayAdminWords();
 
     } finally {
-
         adminSave.disabled = false;
+        adminSave.textContent = editingWordId === null ? "➕ Ajouter" : "💾 Enregistrer";
+    }
 
-        adminSave.textContent =
-            editingWordId === null
-                ? "➕ Ajouter"
-                : "💾 Enregistrer";
+}
 
+
+async function saveIrregularVerb() {
+
+    const infinitive = adminInfinitive.value.trim();
+    const preterite = adminPreterite.value.trim();
+    const pastParticiple = adminPastParticiple.value.trim();
+    const translation = adminTranslation.value.trim();
+
+    if (!infinitive || !preterite || !pastParticiple || !translation) {
+        adminFormError.textContent =
+            "❌ Remplis l'infinitif, le prétérit, le participe passé et la traduction.";
+        adminFormError.classList.add("show");
+        return;
+    }
+
+    adminSave.disabled = true;
+    adminSave.textContent = "Enregistrement...";
+
+    try {
+        const result = editingVerbId === null
+            ? await supabaseClient.rpc("admin_add_irregular_verb", {
+                p_code: adminSessionCode,
+                p_infinitive: infinitive,
+                p_preterite: preterite,
+                p_past_participle: pastParticiple,
+                p_translation: translation
+            })
+            : await supabaseClient.rpc("admin_update_irregular_verb", {
+                p_code: adminSessionCode,
+                p_id: editingVerbId,
+                p_infinitive: infinitive,
+                p_preterite: preterite,
+                p_past_participle: pastParticiple,
+                p_translation: translation
+            });
+
+        if (result.error || !result.data || result.data.success !== true) {
+            console.error(result.error);
+            adminFormError.textContent =
+                "❌ " + (result.data?.message || "Erreur lors de l'enregistrement.");
+            adminFormError.classList.add("show");
+            return;
+        }
+
+        alert(editingVerbId === null ? "✅ Verbe ajouté !" : "✅ Verbe modifié !");
+        resetAdminForm();
+        await loadVocabulary();
+        displayAdminVerbs();
+
+    } finally {
+        adminSave.disabled = false;
+        adminSave.textContent = editingVerbId === null ? "➕ Ajouter" : "💾 Enregistrer";
     }
 
 }
@@ -1770,22 +2332,34 @@ async function saveWord() {
 
 function startEdit(item) {
 
-    editingWordId =
-        item.id;
+    setAdminMode("words");
+    editingWordId = item.id;
+    editingVerbId = null;
 
-    adminWord.value =
-        item.word;
+    adminWord.value = item.word;
+    adminIpa.value = item.ipa;
 
-    adminIpa.value =
-        item.ipa;
-
-    formTitle.textContent =
-        "✏️ Modifier un mot";
-
-    adminSave.textContent =
-        "💾 Enregistrer";
-
+    formTitle.textContent = "✏️ Modifier un mot";
+    adminSave.textContent = "💾 Enregistrer";
     adminWord.focus();
+
+}
+
+
+function startEditVerb(item) {
+
+    setAdminMode("verbs");
+    editingVerbId = item.id;
+    editingWordId = null;
+
+    adminInfinitive.value = item.infinitive || "";
+    adminPreterite.value = item.preterite || "";
+    adminPastParticiple.value = item.past_participle || "";
+    adminTranslation.value = item.translation || "";
+
+    formTitle.textContent = "✏️ Modifier un verbe irrégulier";
+    adminSave.textContent = "💾 Enregistrer";
+    adminInfinitive.focus();
 
 }
 
@@ -1797,30 +2371,29 @@ function startEdit(item) {
 adminCancelEdit.addEventListener(
     "click",
     function() {
-
         resetAdminForm();
-
     }
 );
 
 
 function resetAdminForm() {
 
-    editingWordId =
-        null;
+    editingWordId = null;
+    editingVerbId = null;
 
-    adminWord.value =
-        "";
-
-    adminIpa.value =
-        "";
+    adminWord.value = "";
+    adminIpa.value = "";
+    adminInfinitive.value = "";
+    adminPreterite.value = "";
+    adminPastParticiple.value = "";
+    adminTranslation.value = "";
 
     formTitle.textContent =
-        "➕ Ajouter un mot";
+        adminMode === "verbs"
+            ? "➕ Ajouter un verbe irrégulier"
+            : "➕ Ajouter un mot";
 
-    adminSave.textContent =
-        "➕ Ajouter";
-
+    adminSave.textContent = "➕ Ajouter";
     adminFormError.classList.remove("show");
 
 }
@@ -1832,63 +2405,74 @@ function resetAdminForm() {
 
 async function deleteWord(id) {
 
-    const item =
-        vocabulary.find(
-            function(word) {
-                return word.id === id;
-            }
-        );
+    const item = vocabulary.find(function(word) {
+        return word.id === id;
+    });
 
     if (!item) return;
 
-    const confirmed =
-        confirm(
-            "Supprimer le mot « " +
-            item.word +
-            " » ?"
-        );
+    if (!confirm("Supprimer le mot « " + item.word + " » ?")) return;
 
-    if (!confirmed) return;
+    const { data, error } = await supabaseClient.rpc(
+        "admin_delete_word",
+        { p_code: adminSessionCode, p_id: id }
+    );
 
-    const { data, error } =
-        await supabaseClient.rpc(
-            "admin_delete_word",
-            {
-                p_code: adminSessionCode,
-                p_id: id
-            }
-        );
-
-    if (error) {
-
+    if (error || !data || data.success !== true) {
         console.error(error);
-
-        alert(
-            "❌ Impossible de supprimer le mot."
-        );
-
+        alert("❌ " + (data?.message || "Impossible de supprimer le mot."));
         return;
-
-    }
-
-    if (!data || data.success !== true) {
-
-        alert(
-            "❌ " +
-            (data?.message || "Suppression impossible.")
-        );
-
-        return;
-
     }
 
     alert("✅ Mot supprimé !");
-
     await loadVocabulary();
-
     displayAdminWords();
 
 }
+
+
+async function deleteVerb(id) {
+
+    const item = irregularVerbs.find(function(verb) {
+        return verb.id === id;
+    });
+
+    if (!item) return;
+
+    if (!confirm("Supprimer le verbe « " + item.infinitive + " » ?")) return;
+
+    const { data, error } = await supabaseClient.rpc(
+        "admin_delete_irregular_verb",
+        { p_code: adminSessionCode, p_id: id }
+    );
+
+    if (error || !data || data.success !== true) {
+        console.error(error);
+        alert("❌ " + (data?.message || "Impossible de supprimer le verbe."));
+        return;
+    }
+
+    alert("✅ Verbe supprimé !");
+    await loadVocabulary();
+    displayAdminVerbs();
+
+}
+
+
+/* =========================
+   ACTUALISATION EN DIRECT
+========================= */
+
+const realtimeChannel = supabaseClient
+    .channel("prononciation-anglais-live")
+    .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "irregular_verbs" },
+        function() {
+            loadVocabulary();
+        }
+    )
+    .subscribe();
 
 
 /* =========================
@@ -1938,7 +2522,7 @@ function pronounceWord(word, button) {
     synth.cancel();
 
     document
-        .querySelectorAll(".audio-button")
+        .querySelectorAll(".audio-button, .verb-form-audio")
         .forEach(
             function(item) {
                 item.classList.remove("playing");
@@ -1988,27 +2572,7 @@ function pronounceWord(word, button) {
 
 searchInput.addEventListener(
     "input",
-    function() {
-
-        const search =
-            searchInput.value
-                .trim()
-                .toLowerCase();
-
-        const filtered =
-            vocabulary.filter(
-                function(item) {
-
-                    return item.word
-                        .toLowerCase()
-                        .includes(search);
-
-                }
-            );
-
-        displayWords(filtered);
-
-    }
+    applySearch
 );
 
 
